@@ -10,6 +10,7 @@ from django.utils.html import escape
 import pure
 import fiber
 from fiber.models import Page, ContentItem
+from helpdesk.models import Queue
 # from fiber.utils.urls import get_admin_change_url
 # from fiber.app_settings import PERMISSION_CLASS, AUTO_CREATE_CONTENT_ITEMS
 # from fiber.utils.import_util import load_class
@@ -75,3 +76,14 @@ def get_image_url_from_html(object):
     end = text.find("\"", start)
     
     return text[start:end]
+
+@register.simple_tag
+def get_queue_for_page(object):
+    """
+    Usage:
+        {% get_queue_for_page obj as var %}
+    """
+    
+    title_of_page = object.title
+    
+    return Queue.objects.get(title=title_of_page).id

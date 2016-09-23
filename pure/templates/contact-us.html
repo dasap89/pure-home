@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles fiber_tags %}
+{% load staticfiles fiber_tags pure_tags %}
 
 {% block title %}Контакты{% endblock %}
 
@@ -45,12 +45,16 @@
                   <div class="col-sm-12 col-md-8 col-lg-8">
 
                     <div class="contact-p">
-                      <form method="post" action="#" id="contact_form" class="contact-form" accept-charset="UTF-8"><input type="hidden" value="contact" name="form_type" /><input type="hidden" name="utf8" value="✓" />
+                      <form method="post" action={% if user.is_authenticated %}"/helpdesk/tickets/submit/"{% else %}"/helpdesk/"{% endif %} id="contact_form" class="contact-form" accept-charset="UTF-8"><input type="hidden" value="contact" name="form_type" /><input type="hidden" name="utf8" value="✓" />
                         {% csrf_token %}
-                        <input type="text" id="ContactFormName" class="input-full" name="contact[name]" placeholder="Имя"  value="">
-                        <input type="email" id="ContactFormEmail" class="input-full" name="contact[email]" placeholder="E-mail" value="">
-                        <input type="tel" id="ContactFormPhone" class="input-full" name="contact[phone-number]" placeholder="Номер телефона" pattern="[0-9\-]*" value="">
-                        <textarea rows="10" id="ContactFormMessage" class="input-full" name="contact[body]" placeholder="Сообщение..."></textarea>
+                        
+                        <input type="hidden" name="title" value="Contact Form"/>
+            					  <input type="hidden" name="priority" value="3"/>
+            					  <input type="hidden" name="queue" value="{% get_queue_for_page fiber_page %}"/>
+                        <input type="text" id="ContactFormName" class="input-full" name="name" placeholder="Имя"  value="">
+                        <input type="email" id="ContactFormEmail" class="input-full" name="submitter_email" placeholder="E-mail" value="">
+                        <input type="tel" id="ContactFormPhone" class="input-full" name="phone-number" placeholder="Номер телефона" pattern="[0-9\-]*" value="">
+                        <textarea rows="10" id="ContactFormMessage" class="input-full" name="body" placeholder="Сообщение..."></textarea>
                         <input type="submit" class="btn right" value="ОТПРАВИТЬ">
                       </form>
                     </div>

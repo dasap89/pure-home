@@ -39,10 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sites', # It is needed for fiber
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',  # It is neede for helpdesk
     'mptt', # It is needed for fiber
     'compressor', # It is needed for fiber
     'easy_thumbnails', # It is needed for fiber
     'fiber', # It is needed for fiber
+    # 'markup_deprecated',
+    
     'markdown_deux', # It is needed for helpdesk
     'bootstrapform', # It is needed for helpdesk
     'helpdesk', # It is needed for helpdesk
@@ -146,3 +149,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SITE_ID = 1 # It is needed for django-fiber
 
 FIBER_AUTO_CREATE_CONTENT_ITEMS = True
+
+QUEUE_EMAIL_BOX_TYPE = 'imap'
+QUEUE_EMAIL_BOX_SSL = True
+QUEUE_EMAIL_BOX_HOST = 'smtp.yandex.ru'
+QUEUE_EMAIL_BOX_USER = 'design.school.ideas@yandex.ru'
+QUEUE_EMAIL_BOX_PASSWORD = 'ka$axahU7r'
+QUEUE_EMAIL_BOX_PORT = 465
