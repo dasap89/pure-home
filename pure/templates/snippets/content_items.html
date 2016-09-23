@@ -1,0 +1,8 @@
+{% load fiber_tags %}
+{% if fiber_page %}
+
+    {% for content_item in fiber_content_items %}
+        {% include 'snippets/content_item.html' %}
+    {% endfor %}
+
+{% endif %}

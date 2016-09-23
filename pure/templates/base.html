@@ -1,0 +1,405 @@
+<!doctype html>
+{% load staticfiles fiber_tags %}
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <!-- Basic page needs ================================================== -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <!-- Title and description ================================================== -->
+  <title>{% block title %}{% endblock %}</title>
+  <!-- Helpers ================================================== -->
+  <!-- /snippets/social-meta-tags.liquid -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pure home">
+  <meta property="og:site_name" content="Pure">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="#">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#747474">
+  <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+  
+  <!-- CSS ================================================== -->
+  <link href="{% static "css/animate.css" %}" rel="stylesheet" type="text/css"  media="all"  />
+  <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" type="text/css"  media="all"  />
+  <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" type="text/css"  media="all"  />
+  <link href="{% static "css/jquery.bxslider.min.css" %}" rel="stylesheet" type="text/css"  media="all"  />
+  <link href="{% static "css/jquery-ui.css" %}" rel="stylesheet" type="text/css"  media="all"  />
+  <link href="{% static "css/meanmenu.min.css" %}" rel="stylesheet" type="text/css"  media="all"  />
+  <link href="{% static "css/nivo-slider.css" %}" rel="stylesheet" type="text/css"  media="all"  />
+  <link href="{% static "css/normalize.css" %}" rel="stylesheet" type="text/css"  media="all"  />  
+  <link href="{% static "css/owl.carousel.css" %}" rel="stylesheet" type="text/css"  media="all"  />  
+  <link href="{% static "css/owl.theme.css" %}" rel="stylesheet" type="text/css"  media="all"  />  
+  <link href="{% static "css/owl.transitions.css" %}" rel="stylesheet" type="text/css"  media="all"  />   
+  <link href="{% static "css/main.css" %}" rel="stylesheet" type="text/css"  media="all"  />
+  <link href="{% static "css/fonts.css" %}" rel="stylesheet" type="text/css"  media="all"  />
+  <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css"  media="all"  />
+  <link href="{% static "css/responsive.css" %}" rel="stylesheet" type="text/css"  media="all"  />  
+  <script src="{% static "js/vendor/modernizr-2.8.3.min.js" %}" type="text/javascript"></script>
+</head>
+
+<body id="maroko-online-store" class="template-index" >
+  <div id="PageContainer">
+    <div class="header-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-xs-12 top-word">
+            <div class="block-top-link">
+
+              <a class="callback" href="#">Заказать обратный звонок</a>
+
+            </div>
+          </div>
+          <div class="col-md-5 col-xs-12 top-fact">
+            <!-- HEADER TOP MENU -->
+            <div class="header-top-menu text-left top-factcenter hidden-xs">
+              <nav>
+                <ul class="list-unstyled list-inline">
+                  <li class="top-icon"><a href="tel:+7(978)729-78-01"><i class="fa fa-phone" aria-hidden="true"></i><span>+7(978)729-78-01</span></a></li>
+                  
+                  <li class="top-icon"><a href="mailto:"><i class="fa fa-envelope-o" aria-hidden="true"></i><span>ideas.crimea@yandex.ru</span></a></li>
+                  
+                </ul>
+              </nav>
+            </div>
+            <!-- HEADER TOP MENU -->
+          </div>
+          <div class="col-md-4 col-xs-12 top-fact">
+            <!-- HEADER TOP MENU -->
+            <div class="header-top-menu text-right top-factcenter">
+              <nav>
+                <ul class="list-unstyled list-inline">
+                  <li class="top-icon"><a href="http://maroko-3.myshopify.com/checkout"><span>Войти</span></a></li>
+                  
+                  <li class="top-icon"><a href="http://maroko-3.myshopify.com/account/login/"><span>Зарегистрироваться</span></a></li>
+                  
+                </ul>
+              </nav>
+            </div>
+            <!-- HEADER TOP MENU -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+{% block navbar %}
+<div class="header-wrap">
+  <div class="center-banner-area">
+  <img alt="bg" src="{% static "img/bg/main-bg.jpg" %}">
+  <div class="banner-text">
+    <div class="container">
+      <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-5"><img class="responsive-img-head" src="{% static "img/logo/logo-big.png" %}" alt=""></div>
+        <div class="col-md-7"><h2 class="header-text">Дом становится теплее и 
+         уютнее c Pure Home!  </h2></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+    <div class="mainmenu-area">
+      <div class="container">
+        
+       <div class="row hidden-sm hidden-xs">
+               <div class="col-md-10  menutype">
+          <!-- mobile-menu-area start-->
+         <div class="mobile-menu-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="mobile-menu">
+              <nav id="mobile-menu"> <!-- style="display: block;">-->
+                 {% show_menu "mainmenu" 1 1 %}
+              <!--</nav>-->
+                <!-- begin site-nav -->
+<ul class="site-nav nav" id="AccessibleNav">
+      <li >
+        <a href="pages/about-us.html" class="site-nav__link">Главная</a>
+      </li>
+      <li class="capable site-nav--has-dropdown" aria-haspopup="true">
+       <a href="collections/all.1.html" class="site-nav__link">Каталог<i class="fa fa-angle-down" aria-hidden="true"></i>
+        <ul class="site-nav__dropdown">
+          <li><a href="#" class="site-nav__link">Свет</a></li>
+          <li><a href="#" class="site-nav__link">Декор</a></li>
+          <li><a href="#" class="site-nav__link">Текстиль</a></li>
+          <li><a href="#" class="site-nav__link">Обои</a></li>
+          <li><a href="# " class="site-nav__link">Мебель</a></li>
+        </ul>
+
+      </a>
+    </li>
+    <li >
+     <a href="blogs/news.1.html" class="site-nav__link">О компании</a>
+   </li>
+   <li class="capable site-nav--has-dropdown" aria-haspopup="true">
+     <a href="pages/frontpage.html" class="site-nav__link">
+       Доставка
+     </a>
+   </li>
+   <li >
+     <a href="pages/about-us.html" class="site-nav__link">Сотрудничество</a>
+   </li>
+   <li >
+     <a href="pages/contact-us.html" class="site-nav__link">Контакты </a>
+   </li>
+ </ul>
+              </nav>
+            </div>          
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- mobile-menu-area end -->
+   </div>
+        <div class="col-md-10 nopadding-right text-center menutype hidden-sm hidden-xs">
+         <!-- mobile-menu-area start -->
+
+         <!-- mobile-menu-area end -->
+
+         <!-- Main menu area start-->
+         <div class="mega-collapse">
+             
+          <!-- begin site-nav -->
+          <ul class="site-nav nav" id="AccessibleNav">
+              {% show_menu "mainmenu" 1 2 %}
+         <!--   <li >-->
+         <!--     <a href="pages/about-us.html" class="site-nav__link">Главная</a>-->
+         <!--   </li>-->
+         <!--   <li class="capable site-nav--has-dropdown" aria-haspopup="true">-->
+         <!--    <a href="collections/all.1.html" class="site-nav__link">Каталог<i class="fa fa-angle-down" aria-hidden="true"></i>-->
+         <!--   <ul class="site-nav__dropdown">-->
+         <!--     <li><a href="#" class="site-nav__link">Свет</a></li>-->
+         <!--     <li><a href="#" class="site-nav__link">Декор</a></li>-->
+         <!--     <li><a href="#" class="site-nav__link">Текстиль</a></li>-->
+         <!--     <li><a href="#" class="site-nav__link">Обои</a></li>-->
+         <!--     <li><a href="# " class="site-nav__link">Мебель</a></li>-->
+         <!--   </ul>-->
+
+         <!--    </a>-->
+         <!--  </li>-->
+         <!--  <li >-->
+         <!--    <a href="blogs/news.1.html" class="site-nav__link">О компании</a>-->
+         <!--  </li>-->
+         <!--  <li class="capable site-nav--has-dropdown" aria-haspopup="true">-->
+         <!--    <a href="pages/frontpage.html" class="site-nav__link">-->
+         <!--      Доставка-->
+         <!--    </a>-->
+         <!--  </li>-->
+         <!--  <li >-->
+         <!--    <a href="pages/about-us.html" class="site-nav__link">Сотрудничество</a>-->
+         <!--  </li>-->
+         <!--  <li >-->
+         <!--    <a href="pages/contact-us.html" class="site-nav__link">Контакты </a>-->
+         <!--  </li>-->
+         </ul>
+         
+       </div><!-- Navigation start end-->
+     </div>
+     <div class="col-md-2 searchtype">
+       <div class="search-chart">
+        <div class="search-contain">
+         <div class="search-content" style="display: none; height: 56px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+          <div class="site-header__search">
+           <!-- /snippets/search-bar.liquid -->
+           <form action="search.html" method="get" class="input-group search-bar" role="search">
+            <input type="text" placeholder="Поиск..." maxlength="128" class="input-text" value="" name="q">
+            <button class="button" title="Search" type="submit"><span><span>Поиск</span></span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="cart-area">
+     <div class="top-cart">
+      <a href="#"><i class="fa fa-shopping-cart"></i></a>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+{% endblock %}
+<!-- /templates/index.liquid -->
+
+{% block mains %}
+{% endblock %}
+
+<footer>
+  <div class="brand-area">
+    <div class="container">
+      <div class="row">
+        <div class="brand-carousel">
+          <div class="brand-item">
+            <a href="index.html#">
+              <img src="{% static "img/logo/logo_baker.gif" %}" alt="maroko"/>
+            </a>
+          </div> 
+          <div class="brand-item">
+            <a href="index.html#">
+              <img src="{% static "img/logo/logo_baker.gif" %}" alt="maroko"/>
+            </a>
+          </div> 
+          <div class="brand-item">
+            <a href="index.html#">
+              <img src="{% static "img/logo/logo_baker.gif" %}" alt="maroko"/>
+            </a>
+          </div> 
+          <div class="brand-item">
+            <a href="index.html#">
+              <img src="{% static "img/logo/logo_baker.gif" %}" alt="maroko"/>
+            </a>
+          </div> 
+          <div class="brand-item">
+            <a href="index.html#">
+              <img src="{% static "img/logo/logo_baker.gif" %}" alt="maroko"/>
+            </a>
+          </div> 
+          <div class="brand-item">
+            <a href="index.html#">
+              <img src="{% static "img/logo/logo_baker.gif" %}" alt="maroko"/>
+            </a>
+          </div> 
+          <div class="brand-item">
+            <a href="index.html#">
+              <img src="{% static "img/logo/logo_baker.gif" %}" alt="maroko"/>
+            </a>
+          </div> 
+          <div class="brand-item">
+            <a href="index.html#">
+              <img src="{% static "img/logo/logo_baker.gif" %}" alt="maroko"/>
+            </a>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cakewalk-footer-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="col-md-4 col-sm-6">
+            <div class="single-snap-footer">
+              <div class="snap-footer-title">
+                <h4>Каталог</h4>
+              </div>
+              <div class="cakewalk-footer-content">
+                <ul>
+                  <li><a href="#" title="">Свет</a></li>
+                  <li><a href="#" title="">Декор</a></li>
+                  <li><a href="#" title="">Текстиль</a></li>
+                  <li><a href="#" title="">Обои</a></li>
+                  <li><a href="#" title="">Мебель</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="single-snap-footer">
+              <div class="snap-footer-title">
+                <h4>Свяжитесь с нами</h4>
+              </div>
+              <div class="cakewalk-footer-content">
+                <ul>
+                  <li><a href="tel:+7 (978) 729-78-01" title="">+7 (978) 729-78-01 </a></li>
+                  <li><a href="tel:+7 (978) 7434898" title="">+7 (978) 7434898</a></li>
+                  <li><a href="tel:+7 (978) 7297802" title="">+7 (978) 7297802</a></li>
+                  <li><a href="mailto:deas.crimea@yandex.ru" title="">deas.crimea@yandex.ru</a></li>
+                  <li><a href="mailto:ideascrimea@ukr.net" title="">ideascrimea@ukr.net</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-sm-6">
+            <div class="single-snap-footer">
+              <div class="snap-footer-title">
+                <h4>Присоиденяйтесь</h4>
+              </div>
+              <div class="cakewalk-footer-content">
+                <p>Студия дизайна інтерьера
+                  Interior Design Ideas:</p>
+                  <a href="www.design-studio-ideas.ru">www.design-studio-ideas.ru</a>
+                  <ul class="social-footer">
+                    <li><a href="#" title=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#" title=""><i class="fa fa-odnoklassniki" aria-hidden="true"></i></a></li>
+                    <li><a href="#" title=""><i class="fa fa-vk" aria-hidden="true"></i></a></li>
+                    <li><a href="#" title=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>     
+        </div>
+      </div>
+    </div>
+
+    <div class="cakewalk-footer-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 align-center">
+
+            <div class="main-footer-logo">
+             <a href="#">
+              <img src="{% static "img/logo/logo-2.png" %}" alt="" />
+            </a>
+          </div>
+          <div class="some-links">
+            <ul>
+              <li><a href="#" title="">О компании</a></li>
+              <li><a href="#" title="">сотрудничество</a></li>
+              <li><a href="#" title="">контакты</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="footer-coppyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-sms-12 text-center">
+          <address>Сделано Марией Кравчук. 2016</address>
+        </div>
+      </div>
+    </div>
+  </div> 
+</footer>  
+
+
+
+<!-- All Js   -->
+<script src="{% static "js/vendor/jquery-1.11.3.min.js" %}" type="text/javascript"></script>
+<script src="{% static "js/bootstrap.min.js" %}" type="text/javascript"></script>
+<script src="{% static "js/jquery.bxslider.min.js" %}" type="text/javascript"></script>
+<script src="{% static "js/jquery.elevateZoom-3.0.8.min.js" %}" type="text/javascript"></script>
+<script src="{% static "js/jquery.meanmenu.js" %}" type="text/javascript"></script>
+<script src="{% static "js/jquery.nivo.slider.pack.js" %}" type="text/javascript"></script>
+<script src="{% static "js/jquery.scrollUp.min.js" %}" type="text/javascript"></script>
+<script src="{% static "js/main.js" %}" type="text/javascript"></script>
+<script src="{% static "js/owl.carousel.min.js" %}" type="text/javascript"></script>
+<script src="{% static "js/plugins.js" %}" type="text/javascript"></script>
+<script src="{% static "js/price-slider.js" %}" type="text/javascript"></script>
+<script src="{% static "js/wow.min.js" %}" type="text/javascript"></script>
+<script src="{% static "js/fastclick.min.js" %}" type="text/javascript"></script>
+<script src="{% static "js/timber.js" %}" type="text/javascript"></script>
+
+
+<script>
+
+</script>
+
+
+
+</div>
+</body>
+</html>

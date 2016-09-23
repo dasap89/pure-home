@@ -1,0 +1,374 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Pure Home{% endblock %}
+
+{% block mains %}
+
+<div class="maincontent-area">
+  <div class="special-width">
+    <div class="special-inner special-inner1">
+      <a class="images" href="#"><img alt="Дизайнерские обои" src="{% static "img/main/1.jpg" %}"></a>
+      <div class="content">
+        <h2>Дизайнерские обои</h2>
+      </div>
+    </div>
+    <div class="special-inner special-inner2">
+      <a class="images" href="index.html#"><img alt="maroko" src="{% static "img/main/2.jpg" %}"></a>
+      <div class="content">
+        <h2>Декор</h2>
+        <h3>САМЫЕ РАЗНЫЕ ПРИЯТНОСТИ  ДЛЯ ВАШЕГО ДОМА</h3>
+      </div>
+    </div>
+  </div>
+  <div class="special-width">
+    <div class="special-inner special-inner3">
+      <a class="images" href="index.html#"><img alt="maroko" src="{% static "img/main/3.jpg" %}"></a>
+      <div class="content">
+        <h2><span>Свет</span></h2>
+        <h3>ЛУЧШАЯ КОЛЛЕКЦИЯ</h3>
+      </div>
+    </div>
+  </div>
+  <div class="special-width">
+    <div class="special-inner special-inner4">
+      <a class="images" href="index.html#"><img alt="maroko" src="{% static "img/main/4.jpg" %}"></a>
+      <div class="content">
+        <h2>- ТЕКСТИЛЬ -</h2>
+        <h3>то, что становится искусством</h3>
+      </div>
+    </div>
+    <div class="special-inner special-inner5">
+      <a class="images" href="index.html#"><img alt="maroko" src="{% static "img/main/5.jpg" %}"></a>
+      <div class="content">
+        <h2>Мебель</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="featured-product-area">
+  <div class="container">
+    <!-- section-heading start -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-heading">
+          <h3>ХИТЫ ПРОДАЖ</h3>
+        </div>
+      </div>
+    </div>
+    <!-- section-heading end -->
+    <div class="row">
+      <div class="features-curosel">
+       <!-- single-product start -->
+       <div class="col-lg-3 col-md-3">
+        <div class="single-product">
+          <div class="product-img">
+            <a href="#">
+              <img class="primary-image" src="{% static "img/shop/1.jpg" %}" alt="H Lorem ipsum dolor sit">
+              <span class="box-over"></span>
+            </a>
+            <div class="price-box">
+              <span class="new-price nrb">20 500 руб.</span> 
+            </div> 
+            <div class="actions-item nrb__action">
+              <div class="cart__area grd__add">
+                <button type="submit" name="add" class="btn single_add_to_cart_button">
+                  <span>ПОСМОТРЕТЬ</span>
+                </button>
+              </div>
+              <ul>
+                <li><a title="" data-toggle="modal" data-target="#h-lorem-ipsum-dolor-sit" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="product-content">
+            <h2 class="product-name"><a href="#">Гардины</a></h2>
+          </div>
+        </div>
+      </div>
+      <!-- single-product start -->
+      <div class="col-lg-3 col-md-3">
+        <div class="single-product">
+          <div class="product-img">
+            <a href="collections/frontpage/products/lcd-screen-cleaning-kit.html">
+              <img class="primary-image" src="{% static "img/shop/2.jpg" %}" alt="Lcd screen cleaning kit">
+              <span class="box-over"></span>
+            </a>
+            <div class="price-box">
+              <span class="new-price nrb">20 500 руб. </span> 
+            </div> 
+            <div class="actions-item nrb__action">
+              <div class="cart__area grd__add">
+                <button type="submit" name="add" class="btn single_add_to_cart_button">
+                  <span>ПОСМОТРЕТЬ</span>
+                </button>
+              </form> 
+            </div>
+            <ul>
+              <li><a title="Quick view" data-toggle="modal" data-target="#lcd-screen-cleaning-kit" href="index.html#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="product-content">
+          <h2 class="product-name"><a href="#">ПОДСВЕЧНИК</a></h2>
+        </div>
+      </div>
+    </div>
+    <!-- single-product start -->
+    <div class="col-lg-3 col-md-3">
+      <div class="single-product">
+        <div class="product-img">
+          <a href="collections/frontpage/products/nam-ultrices-molestie-tellus.html">
+            <img class="primary-image" src="{% static "img/shop/3.jpg" %}" alt="Lcd screen cleaning kit">
+            <span class="box-over"></span>
+          </a>
+          <div class="price-box">
+            <span class="new-price nrb">20 500 руб.</span> 
+          </div>
+          <div class="actions-item nrb__action">
+            <div class="cart__area grd__add">
+              <button type="submit" name="add" class="btn single_add_to_cart_button">
+                <span>ПОСМОТРЕТЬ</span>
+              </button>
+            </div>
+            <ul>
+              <li><a title="Quick view" data-toggle="modal" data-target="#nam-ultrices-molestie-tellus" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="product-content">
+          <h2 class="product-name"><a href="#">Лампа</a></h2>
+        </div>
+      </div>
+    </div>
+    <!-- single-product start -->
+    <div class="col-lg-3 col-md-3">
+      <div class="single-product">
+        <div class="product-img">
+          <a href="#">
+            <img class="primary-image" src="{% static "img/shop/4.jpg" %}" alt="Lcd screen cleaning kit">
+            <span class="box-over"></span>
+          </a>
+          <div class="price-box">
+
+            <span class="new-price">20 500 руб.</span>
+          </div>
+          <div class="actions-item nrb__action">
+            <div class="cart__area grd__add">
+              <button type="submit" name="add" class="btn single_add_to_cart_button">
+                <span>ПОСМОТРЕТЬ</span>
+              </button>
+            </div>
+            <ul>
+              <li><a title="Quick view" data-toggle="modal" data-target="#nam-ultrices-molestie-tellus" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="product-content">
+          <h2 class="product-name"><a href="#">Буфет</a></h2>
+        </div>
+      </div>
+    </div>
+    <!-- single-product start -->
+    <div class="col-lg-3 col-md-3">
+      <div class="single-product">
+        <div class="product-img">
+          <a href="collections/frontpage/products/nam-ultrices-molestie-tellus.html">
+            <img class="primary-image" src="{% static "img/shop/3.jpg" %}" alt="Lcd screen cleaning kit">
+            <span class="box-over"></span>
+          </a>
+          <div class="price-box">
+            <span class="new-price nrb">20 500 руб.</span> 
+          </div>
+          <div class="actions-item nrb__action">
+            <div class="cart__area grd__add">
+              <button type="submit" name="add" class="btn single_add_to_cart_button">
+                <span>ПОСМОТРЕТЬ</span>
+              </button>
+            </div>
+            <ul>
+              <li><a title="Quick view" data-toggle="modal" data-target="#nam-ultrices-molestie-tellus" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="product-content">
+          <h2 class="product-name"><a href="#">Лампа</a></h2>
+        </div>
+      </div>
+    </div>
+  </div>				
+</div>
+</div>
+</div>
+<div class="sale-product-area">
+	<div class="container">
+		<!-- section-heading start -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section-heading">
+					<h3>Распродажа</h3>
+				</div>
+			</div>
+		</div>
+		<!-- section-heading end -->
+		<div class="row">
+			<div class="features-curosel">
+       <!-- single-product start -->
+       <div class="col-lg-3 col-md-3">
+        <div class="single-product">
+          <div class="product-img">
+            <a href="#">
+              <img class="primary-image" src="{% static "img/shop/5.jpg" %}" alt="H Lorem ipsum dolor sit">
+              <span class="box-over"></span>
+            </a>
+            <div class="price-box">
+              <span class="old-price"><del>23 500 руб.</del></span>
+              <span class="new-price nrb">20 500 руб.</span> 
+            </div> 
+            <div class="actions-item nrb__action">
+              <div class="cart__area grd__add">
+                <button type="submit" name="add" class="btn single_add_to_cart_button">
+                  <span>ПОСМОТРЕТЬ</span>
+                </button>
+              </div>
+              <ul>
+                <li><a title="" data-toggle="modal" data-target="#h-lorem-ipsum-dolor-sit" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="product-content">
+            <h2 class="product-name"><a href="#">НАБОР КАРТИН</a></h2>
+          </div>
+        </div>
+      </div>
+      <!-- single-product start -->
+      <div class="col-lg-3 col-md-3">
+        <div class="single-product">
+          <div class="product-img">
+            <a href="collections/frontpage/products/lcd-screen-cleaning-kit.html">
+              <img class="primary-image" src="{% static "img/shop/6.jpg" %}" alt="Lcd screen cleaning kit">
+              <span class="box-over"></span>
+            </a>
+            <div class="price-box">
+              <span class="old-price"><del>23 500 руб.</del></span>
+              <span class="new-price nrb">20 500 руб. </span> 
+            </div> 
+            <div class="actions-item nrb__action">
+              <div class="cart__area grd__add">
+                <button type="submit" name="add" class="btn single_add_to_cart_button">
+                  <span>ПОСМОТРЕТЬ</span>
+                </button>
+              </form> 
+            </div>
+            <ul>
+              <li><a title="Quick view" data-toggle="modal" data-target="#lcd-screen-cleaning-kit" href="index.html#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="product-content">
+          <h2 class="product-name"><a href="#">ПЛЕД</a></h2>
+        </div>
+      </div>
+    </div>
+    <!-- single-product start -->
+    <div class="col-lg-3 col-md-3">
+      <div class="single-product">
+        <div class="product-img">
+          <a href="collections/frontpage/products/nam-ultrices-molestie-tellus.html">
+            <img class="primary-image" src="{% static "img/shop/7.jpg" %}" alt="Lcd screen cleaning kit">
+            <span class="box-over"></span>
+          </a>
+          <div class="price-box">
+            <span class="old-price"><del>23 500 руб.</del></span>
+            <span class="new-price nrb">20 500 руб.</span> 
+          </div>
+          <div class="actions-item nrb__action">
+            <div class="cart__area grd__add">
+              <button type="submit" name="add" class="btn single_add_to_cart_button">
+                <span>ПОСМОТРЕТЬ</span>
+              </button>
+            </div>
+            <ul>
+              <li><a title="Quick view" data-toggle="modal" data-target="#nam-ultrices-molestie-tellus" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="product-content">
+          <h2 class="product-name"><a href="#">Гардины</a></h2>
+        </div>
+      </div>
+    </div>
+    <!-- single-product start -->
+    <div class="col-lg-3 col-md-3">
+      <div class="single-product">
+        <div class="product-img">
+          <a href="#">
+            <img class="primary-image" src="{% static "img/shop/8.jpg" %}" alt="Lcd screen cleaning kit">
+            <span class="box-over"></span>
+          </a>
+          <div class="price-box">
+            <span class="old-price"><del>23 500 руб.</del></span>
+            <span class="new-price">20 500 руб.</span>
+          </div>
+          <div class="actions-item nrb__action">
+            <div class="cart__area grd__add">
+              <button type="submit" name="add" class="btn single_add_to_cart_button">
+                <span>ПОСМОТРЕТЬ</span>
+              </button>
+            </div>
+            <ul>
+              <li><a title="Quick view" data-toggle="modal" data-target="#nam-ultrices-molestie-tellus" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="product-content">
+          <h2 class="product-name"><a href="#">ПОДСВЕЧНИК</a></h2>
+        </div>
+      </div>
+    </div>
+    <!-- single-product start -->
+    <div class="col-lg-3 col-md-3">
+      <div class="single-product">
+        <div class="product-img">
+          <a href="collections/frontpage/products/nam-ultrices-molestie-tellus.html">
+            <img class="primary-image" src="{% static "img/shop/6.jpg" %}" alt="Lcd screen cleaning kit">
+            <span class="box-over"></span>
+          </a>
+          <div class="price-box">
+            <span class="old-price"><del>23 500 руб.</del></span>
+            <span class="new-price nrb">20 500 руб.</span> 
+          </div>
+          <div class="actions-item nrb__action">
+            <div class="cart__area grd__add">
+              <button type="submit" name="add" class="btn single_add_to_cart_button">
+                <span>ПОСМОТРЕТЬ</span>
+              </button>
+            </div>
+            <ul>
+              <li><a title="Quick view" data-toggle="modal" data-target="#nam-ultrices-molestie-tellus" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="product-content">
+          <h2 class="product-name"><a href="#">ПЛЕД</a></h2>
+        </div>
+      </div>
+    </div>
+  </div>				
+</div>
+</div>
+</div>
+
+<div class="center-banner-area">
+  <img alt="bg" src="{% static "img/bg/main-bg.jpg" %}">
+  <div class="banner-text">
+    <h3>все самое лучшее для уютной атмосферы</h3>
+    <span>Pure home предоставляет быстрые и надежные условия доставки товара в любую точку стран СНГ</span>
+    <div class="shop-link"><a href="collections/frontpage/products/index.html">подробнее</a></div>
+  </div>
+</div>
+
+
+{% endblock %}

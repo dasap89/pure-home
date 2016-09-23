@@ -1,0 +1,106 @@
+<{% extends "base.html" %}
+{% load staticfiles fiber_tags pure_tags %}
+
+{% block title %}{{ fiber_page.title }}{% endblock %}
+
+{% block navbar %}
+{% include "short_nav.html" %}
+{% endblock %}
+
+{% block mains %}
+
+<div class="product-essential">
+	<div class="container">
+		<div class="row">
+      <!-- /templates/product.liquid -->
+      <div class="col-xs-12 ">
+       <!-- /snippets/breadcrumb.liquid -->
+       <nav class="breadcrumb" aria-label="breadcrumbs">
+        <a href="#" title="Back to the frontpage">Главная</a>
+        <span aria-hidden="true">&rsaquo;</span>
+        <a href="#" title="Back to the frontpage">Свет</a>
+        <span aria-hidden="true">&rsaquo;</span>
+        <span>{{ fiber_page.title }}</span>
+        <div>
+        {{ fiber_page.get_tree }}
+        </div>
+        
+      </nav>
+    </div>
+    <div class="product-single">
+      <div class="col-md-5 col-sm-12 col-xs-12 text-center">
+        <div class="product-single__photos" id="ProductPhoto">
+          <div class="product-single__test"></div>
+          <img src="{% static "img/shop/9.jpg" %}" alt="Suspendisse" id="ProductPhotoImg">
+
+        </div>
+        <div class="tab__product">
+          <ul class="product-single__thumbnails grid-uniform" id="ProductThumbs">
+            {% my_show_page_content "images" %}
+            <!--<li class="grid__item">-->
+            <!--  <a href="{% static "img/shop/6.jpg" %}"  class="product-single__thumbnail">-->
+            <!--    <img src="{% static "img/shop/6.jpg" %}" alt="Suspendisse">-->
+            <!--  </a>-->
+            <!--</li>-->
+            <!--<li class="grid__item">-->
+            <!--  <a href="{% static "img/shop/7.jpg" %}"  class="product-single__thumbnail">-->
+            <!--    <img src="{% static "img/shop/7.jpg" %}" alt="Suspendisse">-->
+            <!--  </a>-->
+            <!--</li>-->
+            <!--<li class="grid__item">-->
+            <!--  <a href="{% static "img/shop/8.jpg" %}"  class="product-single__thumbnail">-->
+            <!--    <img src="{% static "img/shop/8.jpg" %}" alt="Suspendisse">-->
+            <!--  </a>-->
+            <!--</li>-->
+            <!--<li class="grid__item">-->
+            <!--  <a href="{% static "img/shop/9.jpg" %}" class="product-single__thumbnail">-->
+            <!--    <img src="{% static "img/shop/9.jpg" %}" alt="Suspendisse">-->
+            <!--  </a>-->
+            <!--</li>-->
+            <!--<li class="grid__item">-->
+              <!--<a href="{% static "img/shop/9.jpg" %}" class="product-single__thumbnail">-->
+                
+              <!--</a>-->
+            <!--</li>-->
+            
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-7 col-sm-12 col-xs-12">
+        <h1>{{ fiber_page.title }}</h1>
+        <div class="product-description rte">
+          {% show_page_content "product_description" %}
+        </div>
+        <h1>Характеристики</h1>
+        <div class="characteristics">
+          <div class="row">
+            <div class="col-md-5">
+              {% show_page_content "characteristic" %}
+            </div>
+            
+            <div class="col-md-5">
+              {% show_page_content "value_of_char" %}
+            </div>
+            
+        </div>
+        <div>
+          <form action="#" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+
+            <div class="pera">
+              <span id="ProductPrice" class="h2 nrbpd" >
+               {% show_page_content "price" %}
+             </span>
+           </div>
+           <label for="Quantity" class="quantity-selector">Количество</label>
+           <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+           <div class="wishlist-pro-wrapper"><ul><li><a href="#" class="in_items"><span>В корзину</span></a></li></ul></div>
+         </form>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+</div>   
+
+
+{% endblock %}

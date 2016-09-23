@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load staticfiles fiber_tags thumbnail %}
+
+{% block title %}Сотрудничество{% endblock %}
+
+{% block navbar %}
+{% include "short_nav.html" %}
+{% endblock %}
+
+{% block mains %}
+<div class="catagory-image-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+          <a href="#" title="Back to the frontpage">Главная</a>
+          <span aria-hidden="true">&rsaquo;</span>
+          <span>Сотрудничество</span>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="header-wrap-other">
+  <div class="center-banner-area">
+    <img alt="{{ fiber_page.title }}" src="{% thumbnail fiber_page.get_image 943x316 crop="smart" %}" />
+    <div class="banner-text-other">
+      <h3 class="other">{% show_page_content "banner" %}</h3>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 m50">
+      <div class="section-heading ">
+        <h3>{{ fiber_page.title }}</h3>
+      </div>
+    </div>
+    
+</div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      
+      {% show_page_content "body" %}
+      
+    </div>
+  </div>
+</div>
+
+{% endblock %}

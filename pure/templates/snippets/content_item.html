@@ -1,0 +1,14 @@
+{% load staticfiles pure_tags %}
+<li class="grid__item">
+    
+        
+        {% if content_item.template_name %}
+            <a href="{% get_image_url_from_html content_item.template_name %}" class="product-single__thumbnail">
+            {% include content_item.template_name %}
+        {% else %}
+            <a href="{% get_image_url_from_html content_item.content_html %}" class="product-single__thumbnail">
+            {{ content_item.content_html|safe }}
+        {% endif %}
+
+    </a>
+</li>
