@@ -1,0 +1,89 @@
+{% load mptt_tags fiber_tags %}
+{% if user.is_staff %}
+
+    {% if fiber_menu_parent_page %}
+
+        <ul class="site-nav nav" id="AccessibleNav" data-fiber-data='{
+            "type": "page",
+            "add_url": "{{ Page.get_add_url }}",
+            "parent_id": {{ fiber_menu_parent_page.id }}
+        }'>
+
+    {% else %}
+
+        <ul class="site-nav nav" id="AccessibleNav">
+
+    {% endif %}
+    
+    {% recursetree fiber_menu_pages %}
+
+        <li class="{% if children %}capable site-nav--has-dropdown{% endif %}
+            {{ node.title|slugify }}
+            {% if node in fiber_current_pages %}current{% endif %}
+            {% if node.is_first_child %}first{% endif %}
+            {% if node.is_last_child %}last{% endif %}
+            {% if not node.show_in_menu %}df-hidden-in-menu{% endif %}
+            {% if not node.is_public %}df-non-public{% endif %}
+            {% if node.redirect_page %}df-redirect{% endif %}
+        " {% if children %} aria-haspopup="true"{% endif %}>
+            <a class="site-nav__link" href="{{ node.get_absolute_url }}"
+                data-fiber-data='{
+                    {% if node|can_edit:user %}"can_edit": true,{% endif %}
+                    "type": "page",
+                    "id": {{ node.id }},
+                    "parent_id": {{ node.parent.id }},
+                    "url": "{{ node.get_change_url }}",
+                    "add_url": "{{ Page.get_add_url }}"
+                }'>{{ node.title }}{% if children %}<i class="fa fa-angle-down" aria-hidden="true"></i>{% endif %}</a>
+
+            {% if children %}
+
+                <ul class="site-nav__dropdown" {% if node|can_edit:user %} data-fiber-data='{
+                    "type": "page",
+                    "add_url": "{{ Page.get_add_url }}",
+                    "parent_id": {{ node.id }}
+                }'{% endif %}>
+
+                    {{ children }}
+
+                </ul>
+
+            {% endif %}
+
+        </li>
+
+    {% endrecursetree %}
+
+</ul>
+
+{% else %}
+
+<ul class="site-nav nav" id="AccessibleNav">
+
+    {% recursetree fiber_menu_pages %}
+
+        <li class="{% if children %}capable site-nav--has-dropdown{% endif %}
+            {{ node.title|slugify }}
+            {% if node in fiber_current_pages %}current{% endif %}
+            {% if node.is_first_child %}first{% endif %}
+            {% if node.is_last_child %}last{% endif %}
+        " {% if children %} aria-haspopup="true"{% endif %}>
+            <a class="site-nav__link" href="{{ node.get_absolute_url }}">{{ node.title }}{% if children %}<i class="fa fa-angle-down" aria-hidden="true"></i>{% endif %}
+            </a>
+            {% if children %}
+
+                <ul class="site-nav__dropdown">
+
+                    {{ children }}
+
+                </ul>
+
+            {% endif %}
+
+        </li>
+
+    {% endrecursetree %}
+
+</ul>
+
+{% endif %}

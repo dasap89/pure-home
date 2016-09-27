@@ -4,7 +4,7 @@
 {% block title %}О компании{% endblock %}
 
 {% block navbar %}
-{% include "short_nav.html" %}
+{% include "snippets/short_nav.html" %}
 {% endblock %}
 
 {% block mains %}
@@ -13,11 +13,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-          <a href="#" title="Back to the frontpage">Главная</a>
-          <span aria-hidden="true">&rsaquo;</span>
-          <span>О компании </span>
-        </nav>
+        {% include "snippets/path_to_page_nav.html" %}
       </div>
     </div>
   </div>

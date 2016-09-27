@@ -1,5 +1,5 @@
 <!doctype html>
-{% load staticfiles fiber_tags %}
+{% load staticfiles fiber_tags pure_tags %}
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
@@ -104,101 +104,35 @@
 
     <div class="mainmenu-area">
       <div class="container">
-        
-       <div class="row hidden-sm hidden-xs">
-               <div class="col-md-10  menutype">
-          <!-- mobile-menu-area start-->
-         <div class="mobile-menu-area">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="mobile-menu">
-              <nav id="mobile-menu"> <!-- style="display: block;">-->
-                 {% show_menu "mainmenu" 1 1 %}
-              <!--</nav>-->
-                <!-- begin site-nav -->
-<ul class="site-nav nav" id="AccessibleNav">
-      <li >
-        <a href="pages/about-us.html" class="site-nav__link">Главная</a>
-      </li>
-      <li class="capable site-nav--has-dropdown" aria-haspopup="true">
-       <a href="collections/all.1.html" class="site-nav__link">Каталог<i class="fa fa-angle-down" aria-hidden="true"></i>
-        <ul class="site-nav__dropdown">
-          <li><a href="#" class="site-nav__link">Свет</a></li>
-          <li><a href="#" class="site-nav__link">Декор</a></li>
-          <li><a href="#" class="site-nav__link">Текстиль</a></li>
-          <li><a href="#" class="site-nav__link">Обои</a></li>
-          <li><a href="# " class="site-nav__link">Мебель</a></li>
-        </ul>
-
-      </a>
-    </li>
-    <li >
-     <a href="blogs/news.1.html" class="site-nav__link">О компании</a>
-   </li>
-   <li class="capable site-nav--has-dropdown" aria-haspopup="true">
-     <a href="pages/frontpage.html" class="site-nav__link">
-       Доставка
-     </a>
-   </li>
-   <li >
-     <a href="pages/about-us.html" class="site-nav__link">Сотрудничество</a>
-   </li>
-   <li >
-     <a href="pages/contact-us.html" class="site-nav__link">Контакты </a>
-   </li>
- </ul>
-              </nav>
-            </div>          
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- mobile-menu-area end -->
-   </div>
-        <div class="col-md-10 nopadding-right text-center menutype hidden-sm hidden-xs">
-         <!-- mobile-menu-area start -->
-
-         <!-- mobile-menu-area end -->
+          <div class="row">
+            <div class="col-md-10  menutype">
+              
+              <!-- mobile-menu-area start-->
+               <div class="mobile-menu-area">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="mobile-menu">
+                        <nav id="dropdown" style="display: block;">
+                          
+                         {% show_pure_menu "mainmenu" 1 2 "all" %}
+                        
+                        </nav>
+                      </div>          
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- mobile-menu-area end -->
 
          <!-- Main menu area start-->
          <div class="mega-collapse">
              
           <!-- begin site-nav -->
-          <ul class="site-nav nav" id="AccessibleNav">
-              {% show_menu "mainmenu" 1 2 %}
-         <!--   <li >-->
-         <!--     <a href="pages/about-us.html" class="site-nav__link">Главная</a>-->
-         <!--   </li>-->
-         <!--   <li class="capable site-nav--has-dropdown" aria-haspopup="true">-->
-         <!--    <a href="collections/all.1.html" class="site-nav__link">Каталог<i class="fa fa-angle-down" aria-hidden="true"></i>-->
-         <!--   <ul class="site-nav__dropdown">-->
-         <!--     <li><a href="#" class="site-nav__link">Свет</a></li>-->
-         <!--     <li><a href="#" class="site-nav__link">Декор</a></li>-->
-         <!--     <li><a href="#" class="site-nav__link">Текстиль</a></li>-->
-         <!--     <li><a href="#" class="site-nav__link">Обои</a></li>-->
-         <!--     <li><a href="# " class="site-nav__link">Мебель</a></li>-->
-         <!--   </ul>-->
-
-         <!--    </a>-->
-         <!--  </li>-->
-         <!--  <li >-->
-         <!--    <a href="blogs/news.1.html" class="site-nav__link">О компании</a>-->
-         <!--  </li>-->
-         <!--  <li class="capable site-nav--has-dropdown" aria-haspopup="true">-->
-         <!--    <a href="pages/frontpage.html" class="site-nav__link">-->
-         <!--      Доставка-->
-         <!--    </a>-->
-         <!--  </li>-->
-         <!--  <li >-->
-         <!--    <a href="pages/about-us.html" class="site-nav__link">Сотрудничество</a>-->
-         <!--  </li>-->
-         <!--  <li >-->
-         <!--    <a href="pages/contact-us.html" class="site-nav__link">Контакты </a>-->
-         <!--  </li>-->
-         </ul>
+          {% show_pure_menu "mainmenu" 1 2 "all" %}
+          
          
-       </div><!-- Navigation start end-->
+         </div><!-- Navigation start end-->
      </div>
      <div class="col-md-2 searchtype">
        <div class="search-chart">

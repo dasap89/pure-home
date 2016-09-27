@@ -4,7 +4,7 @@
 {% block title %}{{ fiber_page.title }}{% endblock %}
 
 {% block navbar %}
-{% include "short_nav.html" %}
+{% include "snippets/short_nav.html" %}
 {% endblock %}
 
 {% block mains %}
@@ -14,18 +14,7 @@
 		<div class="row">
       <!-- /templates/product.liquid -->
       <div class="col-xs-12 ">
-       <!-- /snippets/breadcrumb.liquid -->
-       <nav class="breadcrumb" aria-label="breadcrumbs">
-        <a href="#" title="Back to the frontpage">Главная</a>
-        <span aria-hidden="true">&rsaquo;</span>
-        <a href="#" title="Back to the frontpage">Свет</a>
-        <span aria-hidden="true">&rsaquo;</span>
-        <span>{{ fiber_page.title }}</span>
-        <div>
-        {{ fiber_page.get_tree }}
-        </div>
-        
-      </nav>
+       {% include "snippets/path_to_page_nav.html" %}
     </div>
     <div class="product-single">
       <div class="col-md-5 col-sm-12 col-xs-12 text-center">
@@ -36,33 +25,7 @@
         </div>
         <div class="tab__product">
           <ul class="product-single__thumbnails grid-uniform" id="ProductThumbs">
-            {% my_show_page_content "images" %}
-            <!--<li class="grid__item">-->
-            <!--  <a href="{% static "img/shop/6.jpg" %}"  class="product-single__thumbnail">-->
-            <!--    <img src="{% static "img/shop/6.jpg" %}" alt="Suspendisse">-->
-            <!--  </a>-->
-            <!--</li>-->
-            <!--<li class="grid__item">-->
-            <!--  <a href="{% static "img/shop/7.jpg" %}"  class="product-single__thumbnail">-->
-            <!--    <img src="{% static "img/shop/7.jpg" %}" alt="Suspendisse">-->
-            <!--  </a>-->
-            <!--</li>-->
-            <!--<li class="grid__item">-->
-            <!--  <a href="{% static "img/shop/8.jpg" %}"  class="product-single__thumbnail">-->
-            <!--    <img src="{% static "img/shop/8.jpg" %}" alt="Suspendisse">-->
-            <!--  </a>-->
-            <!--</li>-->
-            <!--<li class="grid__item">-->
-            <!--  <a href="{% static "img/shop/9.jpg" %}" class="product-single__thumbnail">-->
-            <!--    <img src="{% static "img/shop/9.jpg" %}" alt="Suspendisse">-->
-            <!--  </a>-->
-            <!--</li>-->
-            <!--<li class="grid__item">-->
-              <!--<a href="{% static "img/shop/9.jpg" %}" class="product-single__thumbnail">-->
-                
-              <!--</a>-->
-            <!--</li>-->
-            
+            {% show_pure_page_content "images" %}
           </ul>
         </div>
       </div>
