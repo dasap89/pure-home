@@ -6,11 +6,15 @@ from django import template
 from django.contrib.auth.models import AnonymousUser
 from django.template import TemplateSyntaxError
 from django.utils.html import escape
+from django.db.models import Q
+from django import template
+from django.contrib.humanize.templatetags.humanize import intcomma
 
 import pure
 import fiber
 from fiber.models import Page, ContentItem
 from helpdesk.models import Queue
+
 # from fiber.utils.urls import get_admin_change_url
 # from fiber.app_settings import PERMISSION_CLASS, AUTO_CREATE_CONTENT_ITEMS
 # from fiber.utils.import_util import load_class
@@ -217,3 +221,33 @@ def show_pure_menu(context, menu_name, min_level, max_level, expand=None):
     context.update(MenuHelper(context, menu_name, min_level, max_level, expand).get_context_data())
     return context
 
+@register.simple_tag
+def get_page_by_title(object):
+    """
+    Get page by its title or url
+    
+    Usage:
+        {% get_page_by_title obj %}
+    """
+    
+    title_of_page = object
+    
+    return Page.objects.filter(
+        Q(title__icontains=title_of_page)|Q(url__icontains=title_of_page)
+    ).first()
+
+ 
+@register.filter
+def my_currency(currency):
+    if currency:
+        currency = round(float(currency), 2)
+        # print intcomma(int(currency))
+        # curr = str(int(currency))
+        # curr = curr[::-1]
+        # a = curr.split("curr", 3)
+        # # print a[1]
+        # print " ".join(a)
+        # print currency.join(" ")
+        return "%s%s" % (intcomma(int(currency)), ("%0.2f" % currency)[-3:])
+    else:
+        return ''

@@ -1,0 +1,42 @@
+@font-face {
+	font-family: "OpenSansRegular";
+	src: url("../fonts/OpenSansRegular.eot");
+	src: url("../fonts/OpenSansRegular.eot?#iefix") format("embedded-opentype"),
+			 url("../fonts/OpenSansRegular.woff") format("woff"),
+			 url("../fonts/OpenSansRegular.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: "OpenSansSemiBold";
+	src: url("../fonts/OpenSansSemiBold.eot");
+	src: url("../fonts/OpenSansSemiBold.eot?#iefix") format("embedded-opentype"),
+			 url("../fonts/OpenSansSemiBold.woff") format("woff"),
+			 url("../fonts/OpenSansSemiBold.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: "ArialRegular";
+	src: url("../fonts/ArialRegular.eot");
+	src: url("../fonts/ArialRegular.eot?#iefix") format("embedded-opentype"),
+			 url("../fonts/ArialRegular.woff") format("woff"),
+			 url("../fonts/ArialRegular.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: "goodvibes";
+	src: url("../fonts/goodvibes.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face {
+	font-family: "ClassicaOneRegular";
+	src: url("../fonts/ClassicaOneRegular.eot");
+	src: url("../fonts/ClassicaOneRegular.eot?#iefix") format("embedded-opentype"),
+			 url("../fonts/ClassicaOneRegular.woff") format("woff"),
+			 url("../fonts/ClassicaOneRegular.ttf") format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}

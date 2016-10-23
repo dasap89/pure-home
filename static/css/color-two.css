@@ -1,0 +1,82 @@
+.solid-bg-header,
+.estut-btn.active,
+.estut-btn:hover, 
+.intro-courses-container .estut-btn, 
+.brand-logo-area.solid-bg-1,
+.quick-add-to-cart .single_add_to_cart_button, .call-to-action .estut-btn {
+    background: #fff none repeat scroll 0 0;
+}
+.total-amount span{
+	color: #69D2E7;
+}
+.header-top, .action-cart a, .estut-dropdown > li:hover > a , .estut-btn.active:hover, .intro-courses-container .estut-btn:hover, 
+.quick-add-to-cart .single_add_to_cart_button:hover, .call-to-action .estut-btn:hover{
+    background: #404040 none repeat scroll 0 0;
+}
+.action-cart a, .estut-dropdown > li:hover > a , .estut-btn.active:hover, .intro-courses-container .estut-btn:hover, 
+.quick-add-to-cart .single_add_to_cart_button:hover, .call-to-action .estut-btn:hover {
+    background: #69D2E7 none repeat scroll 0 0;
+}
+.cart-form, .estut-dropdown {
+	border-bottom: 2px solid #69d2e7 ;
+}
+.primary-menu > ul > li:hover > a , .estut-dropdown li a:hover, .course-content .course-title a:hover {
+  color: #F3C020 !important;
+}
+.estut-dropdown li a:hover {
+  color: #fff !important;
+}
+.action-cart a:hover {
+  background: #F3C020 none repeat scroll 0 0;
+}
+.header-top-info > p , 
+.header-top-right ul > li , 
+.header-top-info > p  a, 
+.search-form button, 
+.search-form form input[type="text"], 
+.cart-btn a, 
+.cart-single-product-title p , 
+.cart-single-product-del a{
+	color: #aaaaaa;
+}
+.pro-title a:hover, .blog-title a:hover, .blog-post-dlc ul li a:hover , .filter-menu .nav-tabs > li > a:hover, .filter-menu .nav-tabs > li.active > a, .filter-menu .nav-tabs > li.active > a:focus, .filter-menu .nav-tabs > li.active > a:hover{
+  color: #f98f6f;
+}
+.quick-add-to-cart .estut-btn-v2.color-v2 {
+  background: #f3d474 none repeat scroll 0 0;
+  box-shadow: 0 0 2px 0 #979797;
+  margin-left: 30px;
+}
+.quick-add-to-cart .estut-btn-v2.color-v2:hover {
+  background: #F3C020 none repeat scroll 0 0;
+}
+
+.brand-logo-area.solid-bg-2 {
+  background: #eac75b none repeat scroll 0 0;
+}
+.brand-logo-area.solid-bg-2 .single-brand {
+  border-right: 1px solid #fadd82;
+}
+#scrollUp{
+  background: #f3d474;
+}
+#scrollUp:hover{
+  background: #F3C020;
+}
+::selection {
+    background: #f3d474;
+	color:#fff;
+}
+::-moz-selection {
+    background: #f3d474;
+	color:#fff;
+}
+a{
+	color:#f3d474;
+}
+.author a:hover {
+    color: #F3C020;
+}
+a:hover {
+    color: #F3C020;
+}

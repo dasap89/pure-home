@@ -58,7 +58,7 @@
                 <ul class="list-unstyled list-inline">
                   <li class="top-icon"><a href="tel:+7(978)729-78-01"><i class="fa fa-phone" aria-hidden="true"></i><span>+7(978)729-78-01</span></a></li>
                   
-                  <li class="top-icon"><a href="mailto:"><i class="fa fa-envelope-o" aria-hidden="true"></i><span>ideas.crimea@yandex.ru</span></a></li>
+                  <li class="top-icon"><a href="mailto:ideas.crimea@yandex.ru"><i class="fa fa-envelope-o" aria-hidden="true"></i><span>ideas.crimea@yandex.ru</span></a></li>
                   
                 </ul>
               </nav>
@@ -140,8 +140,8 @@
          <div class="search-content" style="display: none; height: 56px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
           <div class="site-header__search">
            <!-- /snippets/search-bar.liquid -->
-           <form action="search.html" method="get" class="input-group search-bar" role="search">
-            <input type="text" placeholder="Поиск..." maxlength="128" class="input-text" value="" name="q">
+           <form action="/search/" method="GET" class="input-group search-bar" role="search">
+            <input type="text" placeholder="Поиск..." maxlength="128" class="input-text" value="" name="search">
             <button class="button" title="Search" type="submit"><span><span>Поиск</span></span></button>
           </form>
         </div>
@@ -149,7 +149,7 @@
     </div>
     <div class="cart-area">
      <div class="top-cart">
-      <a href="#"><i class="fa fa-shopping-cart"></i></a>
+      <a href="/cart/"><i class="fa fa-shopping-cart"></i></a>
     </div>
   </div>
 </div>
@@ -225,11 +225,10 @@
               </div>
               <div class="cakewalk-footer-content">
                 <ul>
-                  <li><a href="#" title="">Свет</a></li>
-                  <li><a href="#" title="">Декор</a></li>
-                  <li><a href="#" title="">Текстиль</a></li>
-                  <li><a href="#" title="">Обои</a></li>
-                  <li><a href="#" title="">Мебель</a></li>
+                  {% get_page_by_title "Каталог" as page %}
+                  {% for p in page.get_children %}
+                    <li><a href="{{ p.get_absolute_url }}" title="">{{ p.title }}</a></li>
+                  {% endfor %}
                 </ul>
               </div>
             </div>
@@ -244,7 +243,7 @@
                   <li><a href="tel:+7 (978) 729-78-01" title="">+7 (978) 729-78-01 </a></li>
                   <li><a href="tel:+7 (978) 7434898" title="">+7 (978) 7434898</a></li>
                   <li><a href="tel:+7 (978) 7297802" title="">+7 (978) 7297802</a></li>
-                  <li><a href="mailto:deas.crimea@yandex.ru" title="">deas.crimea@yandex.ru</a></li>
+                  <li><a href="mailto:ideas.crimea@yandex.ru" title="">ideas.crimea@yandex.ru</a></li>
                   <li><a href="mailto:ideascrimea@ukr.net" title="">ideascrimea@ukr.net</a></li>
                 </ul>
               </div>
@@ -259,7 +258,7 @@
               <div class="cakewalk-footer-content">
                 <p>Студия дизайна інтерьера
                   Interior Design Ideas:</p>
-                  <a href="www.design-studio-ideas.ru">www.design-studio-ideas.ru</a>
+                  <a href="http://www.design-studio-ideas.ru">www.design-studio-ideas.ru</a>
                   <ul class="social-footer">
                     <li><a href="#" title=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                     <li><a href="#" title=""><i class="fa fa-odnoklassniki" aria-hidden="true"></i></a></li>
@@ -286,9 +285,9 @@
           </div>
           <div class="some-links">
             <ul>
-              <li><a href="#" title="">О компании</a></li>
-              <li><a href="#" title="">сотрудничество</a></li>
-              <li><a href="#" title="">контакты</a></li>
+              <li><a href="{% get_page_by_title "about" as page %}{{ page.get_absolute_url }}" title="">О компании</a></li>
+              <li><a href="{% get_page_by_title "sotrud" as page %}{{ page.get_absolute_url }}" title="">сотрудничество</a></li>
+              <li><a href="{% get_page_by_title "contact" as page %}{{ page.get_absolute_url }}" title="">контакты</a></li>
             </ul>
           </div>
 
