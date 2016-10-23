@@ -23,14 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'vwcf3cmwfn!z9ak-35j8!a=fyq945kex8k-+__4z%d@m3+k9+e'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = []
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -66,35 +61,7 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'pure_project.urls'
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request', # It is needed for django-fiber
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
-
 WSGI_APPLICATION = 'pure_project.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 
 # Password validation
@@ -129,30 +96,4 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # It is needed for django-fiber
-
- # It is needed for django-fiber
-STATICFILES_FINDERS = DEFAULT_SETTINGS.STATICFILES_FINDERS + [
-    'compressor.finders.CompressorFinder',
-] # It is needed for django-fiber
-
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-SITE_ID = 1 # It is needed for django-fiber
-
-FIBER_AUTO_CREATE_CONTENT_ITEMS = True
-
-QUEUE_EMAIL_BOX_TYPE = 'imap'
-QUEUE_EMAIL_BOX_SSL = True
-QUEUE_EMAIL_BOX_HOST = 'smtp.yandex.ru'
-QUEUE_EMAIL_BOX_USER = 'design.school.ideas@yandex.ru'
-QUEUE_EMAIL_BOX_PASSWORD = 'ka$axahU7r'
-QUEUE_EMAIL_BOX_PORT = 465
+from local_settings import *
