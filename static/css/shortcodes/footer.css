@@ -1,0 +1,164 @@
+/*Footer Area*/
+/*Footer Top Area*/
+/*--------------------------------------  
+	7. Call To Action Area
+----------------------------------------*/
+.footer-top-area.bg-1 {
+    background: rgba(0, 0, 0, 0) url("../../img/others/footer-bg-1.jpg") no-repeat scroll center center / cover;
+}
+.footer-top-area.overlay-bg {
+    position: relative;
+}
+.footer-top-area.overlay-bg::before {
+    background: #202020 none repeat scroll 0 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    opacity: 0.95;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.footer-logo {
+    margin-bottom: 30px;
+}
+.newsletter-form {
+    margin-bottom: 50px;
+}
+.newsletter-form form input[type="email"] {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border-color: -moz-use-text-color -moz-use-text-color #4b4b4b;
+    border-image: none;
+    border-style: none none solid;
+    border-width: medium medium 1px;
+    color: #999999;
+    padding: 10px 30px 10px 0px;
+    position: relative;
+    width: 80%;
+}
+.newsletter-form button {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+    color: #999;
+    line-height: 37px;
+    margin-left: -28px;
+    padding: 0 10px;
+    position: relative;
+}
+.widget-title {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.footer-top-menu p,
+.footer-top-menu p a,
+.footer-top-menu a {
+    color: #999999;
+    font-weight: 500;
+}
+.footer-top-menu p strong {
+    color: #fff;
+}
+.footer-social-bookmark ul li a {
+    font-size: 20px;
+}
+.footer-social-bookmark ul li {
+    display: inline-block;
+    line-height: 1;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+.footer-social-bookmark ul li:first-child {
+    padding-left: 0;
+}
+.footer-social-bookmark ul li:last-child {
+    padding-right: 0;
+}
+.footer-social-bookmark {
+    display: block;
+    margin-top: 30px;
+    overflow: hidden;
+}
+.footer-social-bookmark ul li a.facebook {
+    color: #42599e;
+}
+.footer-social-bookmark ul li a.twitter {
+    color: #509fdb;
+}
+.footer-social-bookmark ul li a.google-plus {
+    color: #D13D2F;
+}
+.footer-social-bookmark ul li a.dribbble {
+    color: #F873A3;
+}
+.footer-social-bookmark ul li a.behance {
+    color: #0094FF;
+}
+.fo-course-container ul li a {
+    line-height: 1;
+    margin-left: 15px;
+    position: relative;
+}
+.fo-course-container ul li .date {
+    color: #5e5e5e;
+    font-size: 13px;
+    line-height: 24px;
+}
+.fo-course-container ul li a::before {
+    content: "";
+    font-family: fontawesome;
+    height: 14px;
+    left: -15px;
+    margin-top: -7px;
+    position: absolute;
+    top: 50%;
+    width: 10px;
+}
+a.user-name {
+    color: #fff;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.fo-twitter-feed-container ul li p {
+    line-height: 20px;
+}
+.fo-aboutus-container > p {
+    margin-bottom: 30px;
+}
+.blog-flickr {
+    margin-top: 10px;
+    overflow: hidden;
+}
+.blog-flickr ul {
+    margin-left: -2px;
+    overflow: hidden;
+}
+.blog-flickr ul li {
+    float: left;
+    width: 33.33%;
+}
+.blog-flickr ul li a {
+    display: block;
+    margin: 2px;
+    position: relative;
+}
+.blog-flickr ul li a img {
+    width: 100%;
+}
+.footer-bottom-area {
+    background: #1c1c1c none repeat scroll 0 0;
+    padding: 25px 0;
+}
+.copyright-wrap p {
+    color: #999;
+    margin: 0;
+}

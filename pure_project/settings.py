@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for pure_project project.
 
@@ -90,9 +91,17 @@ WSGI_APPLICATION = 'pure_project.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'purehomedb',
+    'USER': 'ubuntu',
+    'PASSWORD': 'cloud9isawesome',
+    'HOST': '', # Set to empty string for localhost.
+    'PORT': '', # Set to empty string for default.
     }
 }
 
@@ -156,3 +165,20 @@ QUEUE_EMAIL_BOX_HOST = 'smtp.yandex.ru'
 QUEUE_EMAIL_BOX_USER = 'design.school.ideas@yandex.ru'
 QUEUE_EMAIL_BOX_PASSWORD = 'ka$axahU7r'
 QUEUE_EMAIL_BOX_PORT = 465
+
+FIBER_METADATA_PAGE_SCHEMA = {
+        'best_seller': {
+                    'widget': 'select',
+                    'values': ['yes', 'no', ],
+                },
+        'old_price': {
+                    'widget': 'textarea',
+                },
+        'new_price': {
+                    'widget': 'textarea',
+        },
+        'currency': {
+                'widget': 'textfield',
+                'devfault_value': 'руб.',
+        }
+}

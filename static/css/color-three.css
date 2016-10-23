@@ -1,0 +1,103 @@
+.total-amount span {
+    color: #19caab;
+}
+.header-top {
+    background: #1c1c1c none repeat scroll 0 0;
+}
+.header-top-info > p,
+.header-top-right ul > li {
+    border-left: 1px solid #aaa;
+}
+.action-cart a,
+.estut-dropdown > li:hover > a,
+.estut-btn.active:hover,
+.intro-courses-container .estut-btn:hover,
+.quick-add-to-cart .single_add_to_cart_button:hover,
+.call-to-action .estut-btn:hover,
+#scrollUp {
+    background: #19caab none repeat scroll 0 0;
+}
+.cart-form,
+.estut-dropdown {
+    border-bottom: 2px solid #19caab;
+}
+.primary-menu > ul > li:hover > a,
+.estut-dropdown li a:hover,
+.course-content .course-title a:hover {
+    color: #19caab !important;
+}
+.estut-dropdown li a:hover {
+    color: #fff !important;
+}
+.action-cart a:hover {
+    background: #07b193 none repeat scroll 0 0;
+}
+.header-top-info > p,
+.header-top-right ul > li,
+.header-top-info > p a,
+.search-form button,
+.search-form form input[type="text"],
+.cart-btn a,
+.cart-single-product-title p,
+.cart-single-product-del a {
+    color: #aaaaaa;
+}
+.pro-title a:hover,
+.blog-title a:hover,
+.blog-post-dlc ul li a:hover,
+.filter-menu .nav-tabs > li > a:hover,
+.filter-menu .nav-tabs > li.active > a,
+.filter-menu .nav-tabs > li.active > a:focus,
+.filter-menu .nav-tabs > li.active > a:hover {
+    color: #19caab;
+}
+.quick-add-to-cart .estut-btn-v2.color-v2 {
+    background: #f3d474 none repeat scroll 0 0;
+    box-shadow: 0 0 2px 0 #979797;
+    margin-left: 30px;
+}
+.quick-add-to-cart .estut-btn-v2.color-v2:hover {
+    background: #19caab none repeat scroll 0 0;
+}
+.brand-logo-area.solid-bg-2 {
+    background: #19caab none repeat scroll 0 0;
+}
+.brand-logo-area.solid-bg-2 .single-brand {
+    border-right: 1px solid #19caab;
+}
+/*button */
+
+.estut-btn-v2.default-color:hover,
+.estut-btn-v2.default-color.active {
+    background: #19CAAB none repeat scroll 0 0;
+    color: #ffffff;
+}
+.estut-btn-v2.default-color.active:hover,
+#scrollUp:hover {
+    background: #07b193 none repeat scroll 0 0;
+}
+.hover-btn ul li a:hover {
+    background: #19CAAB none repeat scroll 0 0;
+}
+.latest-blog-area-v3 .single-blog.big-post .blog-info .blog-title a:hover,
+.single-blog.big-post .blog-info .blog-post-dlc ul li:hover i {
+    color: #19CAAB;
+}
+
+::selection {
+    background: #19CAAB;
+	color:#fff;
+}
+::-moz-selection {
+    background: #19CAAB;
+	color:#fff;
+}
+a{
+	color:#19caab;
+}
+.author a:hover {
+    color: #19caab;
+}
+a:hover {
+    color: #19caab;
+}

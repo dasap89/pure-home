@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles fiber_tags pure_tags %}
+
+{% block title %}Результаты поиска{% endblock %}
+
+{% block navbar %}
+{% include "snippets/short_nav.html" %}
+{% endblock %}
+
+{% block mains %}
+
+<!-- Start Small image blog Post area -->
+    <form action="/search/" method="GET">
+        <input type="text" name="search" value="{{ search }}">
+        <input type="submit" value="Поиск">
+    </form>
+    {% if object_list %}
+        {% for object in object_list %}
+            <div class="col-md-10"><a href={{ object.get_absolute_url }}>{{ object.title }}</a></div>
+            </br>
+        {% endfor %}
+        
+    {% else %}
+        <div class="col-md-10">No results found. Please type something else into the search box and press search button.</div>
+        </br>
+        </br>
+    {% endif %}
+    
+{% endblock %}

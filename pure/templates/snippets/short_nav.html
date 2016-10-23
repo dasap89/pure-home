@@ -6,7 +6,7 @@
    <!-- Logo Start -->
    <div class="col-lg-2 col-md-2 col-sm-12 logotype">  
     <div class="logo">
-     <a href="#" class="site-header__logo-link">
+     <a href="/" class="site-header__logo-link">
       <img src="{% static "img/logo/logo-top.png" %}" alt="pure">
      </a>
     </div>
@@ -43,8 +43,8 @@
       <div class="search-content" style="display: none; height: 56px; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
        <div class="site-header__search">
         <!-- /snippets/search-bar.liquid -->
-        <form action="#" method="get" class="input-group search-bar" role="search">
-         <input type="text" placeholder="Search..." maxlength="128" class="input-text" value="" name="q">
+        <form action="/search/" method="GET" class="input-group search-bar" role="search">
+         <input type="text" placeholder="Поиск..." maxlength="128" class="input-text" value="" name="search">
          <button class="button" title="Search" type="submit"><span><span>Search</span></span></button>
         </form>
        </div>
@@ -53,7 +53,7 @@
 
      <div class="cart-area">
       <div class="top-cart">
-       <a href="#"><i class="fa fa-shopping-cart"></i></a>
+       <a href="/cart/"><i class="fa fa-shopping-cart"></i></a>
       </div>
      </div>
     </div>

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles %}
+{% load staticfiles fiber_tags humanize pure_tags %}
 
 {% block title %}Pure Home{% endblock %}
 
@@ -8,43 +8,57 @@
 <div class="maincontent-area">
   <div class="special-width">
     <div class="special-inner special-inner1">
-      <a class="images" href="#"><img alt="Дизайнерские обои" src="{% static "img/main/1.jpg" %}"></a>
+      <a class="images" href="/">
+        {% show_page_content "oboi-img" %}
+      </a>
       <div class="content">
-        <h2>Дизайнерские обои</h2>
+        {% show_page_content "oboi-content" %}
       </div>
     </div>
     <div class="special-inner special-inner2">
-      <a class="images" href="index.html#"><img alt="maroko" src="{% static "img/main/2.jpg" %}"></a>
+      <a class="images" href="index.html#">
+        {% show_page_content "dekor-img" %}
+      </a>
       <div class="content">
-        <h2>Декор</h2>
-        <h3>САМЫЕ РАЗНЫЕ ПРИЯТНОСТИ  ДЛЯ ВАШЕГО ДОМА</h3>
+        {% show_page_content "dekor-content" %}
       </div>
     </div>
   </div>
   <div class="special-width">
     <div class="special-inner special-inner3">
-      <a class="images" href="index.html#"><img alt="maroko" src="{% static "img/main/3.jpg" %}"></a>
+      <a class="images" href="index.html#">
+        {% show_page_content "svet-img" %}
+      </a>
       <div class="content">
-        <h2><span>Свет</span></h2>
-        <h3>ЛУЧШАЯ КОЛЛЕКЦИЯ</h3>
+        {% show_page_content "svet-content" %}
       </div>
     </div>
   </div>
   <div class="special-width">
     <div class="special-inner special-inner4">
-      <a class="images" href="index.html#"><img alt="maroko" src="{% static "img/main/4.jpg" %}"></a>
+      <a class="images" href="index.html#">
+        {% show_page_content "tekstil-img" %}
+      </a>
       <div class="content">
-        <h2>- ТЕКСТИЛЬ -</h2>
-        <h3>то, что становится искусством</h3>
+        {% show_page_content "tekstil-content" %}
       </div>
     </div>
     <div class="special-inner special-inner5">
-      <a class="images" href="index.html#"><img alt="maroko" src="{% static "img/main/5.jpg" %}"></a>
+      <a class="images" href="index.html#">
+        {% show_page_content "mebel-img" %}
+      </a>
       <div class="content">
-        <h2>Мебель</h2>
+        {% show_page_content "mebel-content" %}
       </div>
     </div>
   </div>
+</div>
+
+<div class="my">
+  {% for catalog_page in catalog_pages %}
+    <a href="{{ catalog_page.get_absolute_url }}">{{ catalog_page.title }}</a>
+  {% endfor %}
+  
 </div>
 
 
@@ -216,6 +230,40 @@
 		<div class="row">
 			<div class="features-curosel">
        <!-- single-product start -->
+       {% for item in items_with_old_price %}
+       
+       <div class="col-lg-3 col-md-3">
+        <div class="single-product">
+          <div class="product-img">
+            <a href="#">
+              <!--<img class="primary-image" src="{% static "img/shop/5.jpg" %}" alt="H Lorem ipsum dolor sit">-->
+              {% show_page_content item "main_image" %}
+              
+              <span class="box-over"></span>
+            </a>
+            <div class="price-box">
+              <span class="old-price"><del>{{ item.old_price }} {{ item.metadata.currency }}</del></span>
+              <span class="new-price nrb">{{ item.current_price|my_currency }} {{ item.metadata.currency }} </span> 
+            </div> 
+            <div class="actions-item nrb__action">
+              <div class="cart__area grd__add">
+                <button type="submit" name="add" class="btn single_add_to_cart_button">
+                  <span>ПОСМОТРЕТЬ</span>
+                </button>
+              </div>
+              <ul>
+                <li><a title="" data-toggle="modal" data-target="#h-lorem-ipsum-dolor-sit" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="product-content">
+            <h2 class="product-name"><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h2>
+          </div>
+        </div>
+      </div>
+       {% endfor %}
+       
+       <!-- single-product start -->
        <div class="col-lg-3 col-md-3">
         <div class="single-product">
           <div class="product-img">
@@ -364,9 +412,7 @@
 <div class="center-banner-area">
   <img alt="bg" src="{% static "img/bg/main-bg.jpg" %}">
   <div class="banner-text">
-    <h3>все самое лучшее для уютной атмосферы</h3>
-    <span>Pure home предоставляет быстрые и надежные условия доставки товара в любую точку стран СНГ</span>
-    <div class="shop-link"><a href="collections/frontpage/products/index.html">подробнее</a></div>
+    {% show_page_content "delivery" %}
   </div>
 </div>
 

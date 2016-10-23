@@ -92,7 +92,9 @@ fiber/*
 
 media/*
 
-static/*
+static/fiber/*
+
+static/admin/*
 
 .idea/*
 
