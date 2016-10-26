@@ -97,3 +97,4 @@ USE_L10N = True
 USE_TZ = True
 
 from local_settings import *
+

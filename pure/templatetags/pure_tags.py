@@ -251,3 +251,46 @@ def my_currency(currency):
         return "%s%s" % (intcomma(int(currency)), ("%0.2f" % currency)[-3:])
     else:
         return ''
+
+@register.inclusion_tag('snippets/content_item_raw.html', takes_context=True)
+def show_raw_page_content(context, page_or_block_name, block_name=None):
+    """
+    Fetch and render named content items for the current fiber page, or a given fiber page.
+    {% show_page_content "block_name" %}              use fiber_page in context for content items lookup
+    {% show_page_content other_page "block_name" %}   use other_page for content items lookup
+    """
+    
+    page_or_block_name = page_or_block_name or None
+    if isinstance(page_or_block_name, basestring) and block_name is None:
+        # Single argument e.g. {% show_page_content 'main' %}
+        block_name = page_or_block_name
+        try:
+            page = context['fiber_page']
+        except KeyError:
+            page = None
+    elif (page_or_block_name is None or isinstance(page_or_block_name, Page)) and block_name:
+        # Two arguments e.g. {% show_page_content other_page 'main' %}
+        page = page_or_block_name
+    else:
+        # Bad arguments
+        raise TemplateSyntaxError("'show_page_content' received invalid arguments")
+
+    if page and block_name:
+        page_content_items = page.page_content_items.filter(block_name=block_name).order_by('sort').select_related('content_item')
+        
+        content_items = []
+        for page_content_item in page_content_items:
+            content_item = page_content_item.content_item
+            content_item.page_content_item = page_content_item
+            content_items.append(content_item)
+        
+        context = copy(context)
+        
+        context.update({
+            'fiber_page': page,
+            'ContentItem': ContentItem,
+            'fiber_block_name': block_name,
+            'fiber_content_items': content_items
+        })
+        
+        return context

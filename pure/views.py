@@ -20,11 +20,8 @@ class IndexPage(FiberTemplateView):
     def get_context_data(self):
         data = super(IndexPage, self).get_context_data()
         data['catalog_pages'] = Page.objects.filter(parent__url='catalog').order_by('title')
-        
         data['items_with_old_price'] = Page.objects.filter(old_price__isnull=False)[:8]
-        
-        print data['items_with_old_price']
-        
+        data['best_sellers'] = Page.objects.filter(best_seller__gt=0).order_by('-best_seller')[:8]
         return data
 
 

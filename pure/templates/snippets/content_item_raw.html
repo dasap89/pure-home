@@ -1,0 +1,8 @@
+{% load staticfiles pure_tags %}
+    {% if content_item.template_name %}
+            {% include content_item.template_name %}
+    {% else %}
+            {{ content_item.content_html|safe }}
+            {{ content_item.name }}
+            {{ content_item.content_html }}
+    {% endif %}

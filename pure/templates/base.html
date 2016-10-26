@@ -47,8 +47,8 @@
           <div class="col-md-3 col-xs-12 top-word">
             <div class="block-top-link">
 
-              <a class="callback" href="#">Заказать обратный звонок</a>
-
+              <a href="#" class="callback" title="Header" data-toggle="modal" data-target="#modal_callback">Заказать обратный звонок</a>
+              
             </div>
           </div>
           <div class="col-md-5 col-xs-12 top-fact">
@@ -70,9 +70,10 @@
             <div class="header-top-menu text-right top-factcenter">
               <nav>
                 <ul class="list-unstyled list-inline">
-                  <li class="top-icon"><a href="http://maroko-3.myshopify.com/checkout"><span>Войти</span></a></li>
+                  <li class="top-icon"><a href="#" class="callback" title="Header" data-toggle="modal" data-target="#modal_enter_login"><span>Войти</span></a></li>
                   
-                  <li class="top-icon"><a href="http://maroko-3.myshopify.com/account/login/"><span>Зарегистрироваться</span></a></li>
+                  <li class="top-icon"><a href="#" class="callback" title="Header" data-toggle="modal" data-target="#modal_enter_login"><span>Зарегистрироваться</span></a></li>
+                  
                   
                 </ul>
               </nav>
@@ -149,7 +150,8 @@
     </div>
     <div class="cart-area">
      <div class="top-cart">
-      <a href="/cart/"><i class="fa fa-shopping-cart"></i></a>
+      {% get_page_by_title "catalog" as catalog %}
+      <a href="{{ catalog.get_absolute_url }}"><i class="fa fa-shopping-cart"></i></a>
     </div>
   </div>
 </div>
@@ -260,8 +262,10 @@
                   Interior Design Ideas:</p>
                   <a href="http://www.design-studio-ideas.ru">www.design-studio-ideas.ru</a>
                   <ul class="social-footer">
-                    <li><a href="#" title=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#" title=""><i class="fa fa-odnoklassniki" aria-hidden="true"></i></a></li>
+                    {% show_raw_page_content "url_to_facebook" %}
+                    
+                    <li><a href="{% show_raw_page_content "url_to_facebook" %}" title=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="{% show_page_content "url_to_odnoklassniki" %}" title=""><i class="fa fa-odnoklassniki" aria-hidden="true"></i></a></li>
                     <li><a href="#" title=""><i class="fa fa-vk" aria-hidden="true"></i></a></li>
                     <li><a href="#" title=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                   </ul>
@@ -326,10 +330,101 @@
 <script src="{% static "js/fastclick.min.js" %}" type="text/javascript"></script>
 <script src="{% static "js/timber.js" %}" type="text/javascript"></script>
 
-
-<script>
-
+<script type="text/javascript">
+$("#callback_form").on('submit', function (e) {
+    debugger;
+    e.preventDefault();
+                
+    var body = 'Пользователь '.concat($('#id_name').val(),' хочет получить обратный звонок на номер телефона ',$('#id_phone').val());
+    var data = {
+           'body': body
+    }
+    var formData =  $(e.currentTarget).serialize() + '&' + $.param(data);
+    alert("Hello");
+            
+    $.ajax({
+        method: "POST",
+        url: "/helpdesk/tickets/submit/",
+        data: formData,
+	fail: function(response, status) {
+		debugger;
+	},
+        success: function (response) {
+            debugger;
+            if (status == 302) {
+                window.location.replace("/about/");
+            } else {
+                alert("Спасибо, ".concat($('#id_name').val(),". Ваша заявка принята. С Вами свяжутся в скором времени"));
+                document.getElementById("callback_form").reset();
+            }
+        }
+    });
+})
 </script>
+
+<!-- Modal -->
+<div class="modal fade" id="modal_callback" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Заказать звонок</h4>
+      </div>
+      <div class="modal-body">
+      <form role="form" id="callback_form" action={% if user.is_authenticated %}"/helpdesk/tickets/submit/"{% else %}"/helpdesk/"{% endif %} method="POST">
+        {% csrf_token %}
+        <!-- Hiden Fields -->
+        <input type="hidden" name="title" id="id_title" value="Callback Form"/>
+        <input type="hidden" name="queue" value="2"/>
+        <input type="hidden" name="submitter_email" value="callback@form.page"/>
+        <input type="hidden" name="priority" value="3"/>
+        <!-- End of Hiden Fields -->
+        <div class="form-group">
+          <label for="body">Имя</label>
+            <input type="text" class="form-control" name="body" id="id_body" placeholder="Введите Ваше имя" required/>
+        </div>
+        <div class="form-group">
+          <label for="phone">Телефон</label>
+            <input type="phone" class="form-control" name="phone" id="id_phone" placeholder="Ваш номер телефона" required/>
+        </div>
+        <button type="submit" class="btn btn-default">Заказать!</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+      </form>
+      
+      
+    </div>
+    
+  </div>
+</div>
+</div>
+<!-- End Modal -->
+
+<!-- Modal for Entering Site and Login -->
+  <div class="modal fade" id="modal_enter_login" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Вход / Регистрация</h4>
+        </div>
+        <div class="modal-body">
+          <p>На данный момент вход / регистрация на сайте находится в стадии разработки.</p>
+          <p>Приносим свои извенения.</p>
+          <p>Администрация сайта "Pure-Home".</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!-- Modal for Entering Site and Login -->
+
 
 
 
