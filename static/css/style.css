@@ -4595,6 +4595,7 @@ hr.nrbhr {
   padding: 9px 15px;
   position: relative;
   transition: all 0.2s ease 0s;
+  margin-left: 15px;
 }
 .template-product .wishlist-pro-wrapper a {
   color: #fff !important;

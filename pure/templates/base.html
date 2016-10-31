@@ -39,7 +39,9 @@
   <script src="{% static "js/vendor/modernizr-2.8.3.min.js" %}" type="text/javascript"></script>
 </head>
 
+{% block bodyid %}
 <body id="maroko-online-store" class="template-index" >
+{% endblock %}
   <div id="PageContainer">
     <div class="header-area">
       <div class="container">
@@ -331,19 +333,17 @@
 <script type="text/javascript">
 $(function() {
    $("#callback_form").on('submit', function (e) {
-    alert("Helo");
     e.preventDefault();
-                
-    var body = 'Пользователь '.concat($('#id_name').val(),' хочет получить обратный звонок на номер телефона ',$('#id_phone').val());
+    var url = $(e.currentTarget).attr('action')           
+    var body = 'Пользователь '.concat($('#id_body').val(),' хочет получить обратный звонок на номер телефона ',$('#id_phone').val());
     var data = {
            'body': body
     }
     var formData =  $(e.currentTarget).serialize() + '&' + $.param(data);
-    alert("Hello");
             
     $.ajax({
         method: "POST",
-        url: "/helpdesk/tickets/submit/",
+        url: url,
         data: formData,
 	fail: function(response, status) {
 		debugger;
@@ -353,7 +353,7 @@ $(function() {
             if (status == 302) {
                 window.location.replace("/about/");
             } else {
-                alert("Спасибо, ".concat($('#id_name').val(),". Ваша заявка принята. С Вами свяжутся в скором времени"));
+                alert("Спасибо, ".concat($('#id_body').val(),". Ваша заявка принята. С Вами свяжутся в скором времени"));
                 document.getElementById("callback_form").reset();
             }
         }

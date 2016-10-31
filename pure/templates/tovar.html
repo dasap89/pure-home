@@ -3,6 +3,10 @@
 
 {% block title %}{{ fiber_page.title }}{% endblock %}
 
+{% block bodyid %}
+<body id="suspendisse" class="template-product" >
+{% endblock %}
+
 {% block navbar %}
 {% include "snippets/short_nav.html" %}
 {% endblock %}
@@ -56,7 +60,11 @@
            </div>
            <label for="quantity" class="quantity-selector">Количество</label>
            <input type="number" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
-           <div class="wishlist-pro-wrapper"><ul><li><a href="#" id="add_to_cart_button" class="in_items" data-toggle="modal" data-target="#cart_modal"><span>В корзину</span></a></li></ul></div>
+           <div class="wishlist-pro-wrapper">
+                <ul>
+                    <li><a href="#" id="add_to_cart_button" class="in_items" data-toggle="modal" data-target="#cart_modal"><span>В корзину</span></a></li>
+	            <li><a href="#" id="add_to_cart_button" class="in_items" data-toggle="modal" data-target="#ask_modal"/><span>Задать вопрос</span></a></li> 
+               </ul></div>
          </form>
        </div>
      </div>
@@ -120,7 +128,53 @@
 </div>
 
 <!-- End Modal -->
+<!-- Modal For Asking Question-->
+<div class="modal fade" id="ask_modal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Задать вопрос</h4>
+      </div>
+      <div class="modal-body">
+        
+      <form role="form" id="modal_ask_form" action={% if user.is_authenticated %}"/helpdesk/tickets/submit/"{% else %}"/helpdesk/"{% endif %} method="POST">
+        {% csrf_token %}
+        <!-- Hiden Fields -->
+        <input type="hidden" name="title" id="id_title" value="Ask Question"/>
+        <input type="hidden" name="queue" value="4"/>
+        <input type="hidden" name="body" id="body_ask" value=""/>
+        
+        <!-- End of Hiden Fields -->
+        <div class="form-group">
+          <label for="name">Имя</label>
+            <input type="text" class="form-control" name="name" id="id_name_ask" placeholder="Введите Ваше имя" required/>
+        </div>
+        <div class="form-group">
+          <label for="phone">Телефон</label>
+            <input type="phone" class="form-control" name="phone" id="id_phone_ask" placeholder="Ваш номер телефона" required/>
+        </div>
+        <div class="form-group">
+          <label for="id_submitter_email">Email</label>
+            <input type="email" class="form-control" name="submitter_email" id="id_submitter_email" placeholder="Ваш почтовый ящик" required/>
+        </div>
+        <div class="form-group">
+          <label for="ask">Вопрос</label>
+          <textarea class="form-control" name="ask" id="ask_ask" placeholder="Введите вопрос" rows="5" required></textarea>
+        </div>
+        
+        <button type="submit" id="ask_button" class="btn btn-default">Отправить</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+      </form>
+    
+    </div>
+  </div>
+  </div>
+</div>
 
+<!-- End Modal -->
 
 {% endblock %}
 
@@ -135,11 +189,63 @@
     $('#modal_quantity').click(function(){
         $('#modal_price').val(parseFloat( document.getElementById('ProductPrice').innerHTML ) * $('#modal_quantity').val());
     });
-    $('#submit_button').click(function(){
-        alert("Hello");
-        $('#body').val("Пользователь " + $('#id_name') + "хочет купить  " + $('#modal_quantity').val() + " шт. товара " + $('#product_name').val() + ". Стоимость: " + $('#modal_price').val());
+})
+</script>
+<script type="text/javascript">
+$(function() {
+   $("#cart_form").on('submit', function (e) {
+        e.preventDefault();
+        $('#body').val("Пользователь " + $('#id_name').val() + "хочет купить  " + $('#modal_quantity').val() + " шт. товара " + $('#product_name').val() + ". Стоимость: " + $('#modal_price').val());
+
+        var url = $(e.currentTarget).attr('action');
+        var formData =  $(e.currentTarget).serialize();
+        alert(url);
+        $.ajax({
+            method: "POST",
+            url: url,
+            data: formData,
+            fail: function(response, status) {
+                    debugger;
+            },
+            success: function (response) {
+                if (status == 302) {
+                    window.location.replace("/about/");
+                } else {
+                    alert("Пользователь ".concat($('#id_name').val()," хочет заказать товар ", $('#product_name').val(), " в количестве ", $("#modal_quantity").val(), ". Стоимость: ", $("#modal_price").val()));
+                document.getElementById("cart_form").reset();
+            }
+        }
     });
 });
+});
 </script>
+
+<script type="text/javascript">
+$(function() {
+   $("#modal_ask_form").on('submit', function (e) {
+    alert("Helo");
+    e.preventDefault();
+    var url = $(e.currentTarget).attr('action');
+    $('#body_ask').val("Пользователь " + $('#id_name_ask').val() + " (номер телефона " + $('#id_phone_ask').val() + ") задает вопрос: " + $('#ask_ask').val());
+    var formData =  $(e.currentTarget).serialize();
+    alert("Hello");
+    
+    $.ajax({
+        method: "POST",
+        url: url,
+        data: formData,
+        success: function (response) {
+            if (status == 302) {
+                window.location.replace("/about/");
+            } else {
+                alert("Пользователь ".concat($('#id_name_ask').val()," (номер телефона ", $('#id_phone_ask').val(), ") задает вопрос: ", $('#ask_ask').val()));
+                document.getElementById("modal_ask_form").reset();
+            }
+        }
+    });
+})
+})
+</script>
+
 
 {% endblock %}

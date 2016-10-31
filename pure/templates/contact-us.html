@@ -125,3 +125,36 @@
   </script>
 
 {% endblock %}
+
+{% block additional_scripts %}
+
+<script type="text/javascript">
+$(function() {
+   $("#contact_form").on('submit', function (e) {
+    alert("Helo");
+    e.preventDefault();
+    var url = $(e.currentTarget).attr('action')
+    var formData =  $(e.currentTarget).serialize();
+    alert("Hello");
+    
+    $.ajax({
+        method: "POST",
+        url: url,
+        data: formData,
+        fail: function(response, status) {
+                debugger;
+        },
+        success: function (response) {
+            if (status == 302) {
+                window.location.replace("/about/");
+            } else {
+                alert("Пользователь ".concat($('#id_name').val()," хочет заказать товар ", $('#product_name').val(), " в количестве ", $("#modal_quantity").val(), ". Стоимость: ", $("#modal_price").val()));
+                document.getElementById("contact_form").reset();
+            }
+        }
+    });
+})
+})
+</script>
+
+{% endblock %}
