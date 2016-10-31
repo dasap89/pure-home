@@ -1,0 +1,54 @@
+{% load i18n %}
+
+{% if is_paginated %}
+    <div class="pagination">
+        <ul>
+            {% if page_obj.has_previous %}
+                <li class="previous">
+                    <a href="?{{ page_obj.previous_page_number.querystring }}">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    </a>
+                </li>
+            {% else %}
+                <li class="previous disabled">
+                    <span>
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    </span>
+                </li>
+            {% endif %}
+
+            {% for page in page_obj.pages %}
+                {% if page %}
+                    {% if page == page_obj.number %}
+                        <li>
+                            <a class="active" href="?{{ page.querystring }}">{{ page }}<span class="sr-only">({% trans 'current page' %})</span></a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="?{{ page.querystring }}">{{ page }}</a>
+                        </li>
+                    {% endif %}
+                {% else %}
+                    <li class="disabled">
+                        <span>...</span>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li class="next">
+                    <a href="?{{ page_obj.next_page_number.querystring }}">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </a>
+                </li>
+            {% else %}
+                <li class="next disabled">
+                    <span>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+    </br>
+{% endif %}

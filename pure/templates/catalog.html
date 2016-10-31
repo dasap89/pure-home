@@ -23,8 +23,8 @@
     <img alt="bg" src="{% static "img/bg/shine.jpg" %}">
 
     <div class="banner-text">
-      <h3>СВЕТ  </h3>
-      <span>Лучшая коллекция</span>
+      <h3>{{ fiber_page.title }}</h3>
+      <span>{% show_page_content "banner_span" %}</span>
 
     </div>
   </div>
@@ -42,15 +42,10 @@
             <!-- color-bar start -->
             <div class="color-bar">
               <ul>
-                <li><a href="#">Обои</a></li>
-
-                <li><a href="#">Свет</a></li>
-
-                <li><a href="#">Декор</a></li>
-
-                <li><a href="#">Текстиль</a></li>
-
-                <li><a href="#">Мебель</a></li>
+		{% get_page_by_title "catalog" as catalog %}
+		{% for page in catalog.get_children %}
+			<li><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></li>
+		{% endfor %}
               </ul>
             </div>
 
@@ -80,14 +75,10 @@
 
         </header>
         <!--  PRODUCT -->
-        {% if fiber_page.get_children %}
-	{% if fiber_page.title = "Каталог" %}
-		{% get_page_by_title "svet" as main %}
-	{% else %}
-		{% get_page_by_title fiber_page.title as main %}
-	{% endif %}
+        {% if object_list %}
 	<!-- single-product start -->
-        {% for product in main.get_children %}
+        {% for product in object_list %}
+
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
           <div class="single-product">
             <div class="product-img">
@@ -121,16 +112,9 @@
         {% endfor %}
         <!-- single-product end -->
 
-        <div class="pagination">
-          <ul>
-            <li><a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
-            <li><a href="#">1</a></li>
-            <li><a class="active" href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-          </ul>
-        {% else %}
-		<h2>There is no products in this section.</p>
+        {% include "snippets/pagination.html" %}
+	{% else %}
+		<h3>В этом разделе нет товаров.</h3>
 	{% endif %}
 	</div>
       </div>

@@ -13,7 +13,8 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.forms.models import model_to_dict
 
-# from pure_pagination.mixins import PaginationMixin
+from pure_pagination.mixins import PaginationMixin
+from fiber.mixins import FiberPageMixin
 
 
 class IndexPage(FiberTemplateView):
@@ -25,8 +26,8 @@ class IndexPage(FiberTemplateView):
         return data
 
 
-class SearchPage(ListView):
-    paginate_by = 10 #this variable is used for pagination
+class SearchPage(PaginationMixin, ListView):
+    paginate_by = 5 #this variable is used for pagination
     template_name = 'search.html'
     
     def get_queryset(self):
@@ -49,12 +50,21 @@ class SearchPage(ListView):
         context['search'] = self.search
         return context
 
+class CatalogPage(FiberPageMixin, PaginationMixin, ListView):
+    paginate_by = 9 #this variable is used for pagination
+    template_name = 'catalog.html'
 
-class CatalogPage(ListView):
-    paginate_by = 10 #this variable is used for pagination
-    
-    def get_context_data(self):
-        data = super(CatalogPage, self).get_context_data()
-        data['catalog_items'] = Page.objects.filter(parent__url='catalog').order_by('title')
+
+    def get_fiber_page_url(self):
+        return self.request.path_info
+
+    def get_queryset(self):
         
-        return data
+        parent_url = self.request.path[9:-1]         
+        if len(parent_url):
+            objects = Page.objects.filter(parent__url=parent_url)
+        else:
+            objects = Page.objects.filter(parent__url='svet')
+        print objects
+        
+        return objects

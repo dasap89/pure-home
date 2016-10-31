@@ -147,7 +147,6 @@ class MenuHelper(object):
             self.menu_parent = root
         return tree
 
-# @register.inclusion_tag('pure/templates/snippets/content_items.html', takes_context=True)
 @register.inclusion_tag('snippets/content_items.html', takes_context=True)
 def show_pure_page_content(context, page_or_block_name, block_name=None):
     """

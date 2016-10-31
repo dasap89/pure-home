@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'easy_thumbnails', # It is needed for fiber
     'fiber', # It is needed for fiber
     # 'markup_deprecated',
-    
+    'pure_pagination',
     'markdown_deux', # It is needed for helpdesk
     'bootstrapform', # It is needed for helpdesk
     'helpdesk', # It is needed for helpdesk
@@ -95,6 +95,13 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+GINATION_SETTINGS = {
+    'PAGE_RANGE_DISPLAYED': 10,
+    'MARGIN_PAGES_DISPLAYED': 2,
+
+    'SHOW_FIRST_PAGE_WHEN_INVALID': True,
+}
 
 from local_settings import *
 

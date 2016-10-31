@@ -51,12 +51,12 @@
 
             <div class="pera">
               <span id="ProductPrice" class="h2 nrbpd" >
-               {{ fiber_page.metadata.new_price }} {{ fiber_page.metadata.currency }}
+               {{ fiber_page.current_price }} {% if fiber_page.metadata.currency %}{{ fiber_page.metadata.currency }}{% else %}руб.{% endif %}
              </span>
            </div>
-           <label for="Quantity" class="quantity-selector">Количество</label>
-           <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
-           <div class="wishlist-pro-wrapper"><ul><li><a href="#" class="in_items"><span>В корзину</span></a></li></ul></div>
+           <label for="quantity" class="quantity-selector">Количество</label>
+           <input type="number" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
+           <div class="wishlist-pro-wrapper"><ul><li><a href="#" id="add_to_cart_button" class="in_items" data-toggle="modal" data-target="#cart_modal"><span>В корзину</span></a></li></ul></div>
          </form>
        </div>
      </div>
@@ -65,5 +65,81 @@
 </div>
 </div>   
 
+
+{% endblock %}
+
+{% block additional_modals %}
+
+<!-- Modal For Ordering Goods-->
+<<div class="modal fade" id="cart_modal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Заказать товар</h4>
+      </div>
+      <div class="modal-body">
+        
+      <form role="form" id="cart_form" action={% if user.is_authenticated %}"/helpdesk/tickets/submit/"{% else %}"/helpdesk/"{% endif %} method="POST">
+        {% csrf_token %}
+        <!-- Hiden Fields -->
+        <input type="hidden" name="title" id="id_title" value="Cart Form"/>
+        <input type="hidden" name="queue" value="3"/>
+        <input type="hidden" name="body" id="body" value=""/>
+        <!-- End of Hiden Fields -->
+        <div class="form-group">
+          <label for="name">Имя</label>
+            <input type="text" class="form-control" name="name" id="id_name" placeholder="Введите Ваше имя" required/>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPhone">Телефон</label>
+            <input type="phone" class="form-control" name="phone" id="id_phone" placeholder="Ваш номер телефона" required/>
+        </div>
+        <div class="form-group">
+          <label for="id_submitter_email">Телефон</label>
+            <input type="email" class="form-control" name="submitter_email" id="id_submitter_email" placeholder="Ваш почтовый ящик" required/>
+        </div>
+ 	<div class="form-group">
+          <label for="quantity">Количество</label>
+            <input type="number" class="form-control" id="modal_quantity" name="1quantity" value="1" min="1" class="quantity-selector">
+        </div>
+        <div class="form-group">
+          <label for="price">Стоимость</label>
+            <input type="text" class="form-control" id="modal_price" name="price" readonly>
+        </div>       
+        
+        <button type="submit" id="submit_button" class="btn btn-default">Заказать!</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+      </form>
+    
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- End Modal -->
+
+
+{% endblock %}
+
+{% block additional_scripts %}
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#add_to_cart_button").click(function(){
+        $('#modal_quantity').val($('#quantity').val());
+        $('#modal_price').val(parseFloat( document.getElementById('ProductPrice').innerHTML ) * $('#quantity').val());
+    });
+    $('#modal_quantity').click(function(){
+        $('#modal_price').val(parseFloat( document.getElementById('ProductPrice').innerHTML ) * $('#modal_quantity').val());
+    });
+    $('#submit_button').click(function(){
+        alert("Hello");
+        $('#body').val("Пользователь " + $('#id_name') + "хочет купить  " + $('#modal_quantity').val() + " шт. товара " + $('#product_name').val() + ". Стоимость: " + $('#modal_price').val());
+    });
+});
+</script>
 
 {% endblock %}

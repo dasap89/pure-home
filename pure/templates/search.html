@@ -19,7 +19,7 @@
             <div class="col-md-10"><a href={{ object.get_absolute_url }}>{{ object.title }}</a></div>
             </br>
         {% endfor %}
-        
+        {% include "snippets/pagination.html" %}
     {% else %}
         <div class="col-md-10">No results found. Please type something else into the search box and press search button.</div>
         </br>
