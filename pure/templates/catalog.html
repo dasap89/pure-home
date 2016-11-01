@@ -149,9 +149,9 @@
       <form role="form" id="modal_cart_form" action={% if user.is_authenticated %}"/helpdesk/tickets/submit/"{% else %}"/helpdesk/"{% endif %} method="POST">
         {% csrf_token %}
         <!-- Hiden Fields -->
-        <input type="hidden" name="title" id="id_title" value="Ask for callback"/>
+        <input type="hidden" name="title" id="id_title" value="Cart Form"/>
         <input type="hidden" name="queue" value="3"/>
-        <input type="hidden" name="body" value=""/>
+        <input type="hidden" name="body" id="body" value=""/>
         <input type="hidden" name="priority" value="3"/>
         <input type="hidden" name="product_title" id="id_product_title" value=""/>
         <input type="hidden" name="product_url" id="id_product_url" value=""/>
@@ -214,9 +214,9 @@ $('#cart_modal').on('show.bs.modal', function (event) {
 </script>
 <script type="text/javascript">
 $(function() {
-   $("#cart_form").on('submit', function (e) {
+   $("#modal_cart_form").on('submit', function (e) {
         e.preventDefault();
-        $('#body').val("Пользователь " + $('#id_name').val() + " хочет купить  " + $('#modal_quantity').val() + " шт. товара " + document.getElementById('id_product_title').innerHTML + " (страница товара  " + document.getElementById('id_product_url').innerHTML + " ). Стоимость " + $('#modal_price').val() + ". Контакты: " + $('#id_phone').val() + " " + $('#id_submitter_email').val());
+        $('#body').val("Пользователь " + $('#id_name').val() + " хочет купить  " + $('#1quantity').val() + " шт. товара " + $('#id_product_title').val() + " (страница товара  " + $('#id_product_url').val() + " ). Стоимость " + $('#price').val() + ". Контакты: " + $('#id_phone').val() + " " + $('#id_submitter_email').val());
 
         var url = $(e.currentTarget).attr('action');
         var formData =  $(e.currentTarget).serialize();
@@ -229,8 +229,8 @@ $(function() {
                 if (status == 302) {
                     window.location.replace("/about/");
                 } else {
-                    alert("Спасибо ".concat($('#id_name').val(),", Ваш заказ принят. Заказано ", document.getElementById('id_product_title').innerHTML, " в количестве ", $("#modal_quantity").val(), ". Стоимость: ", $("#modal_price").val(), ". С Вами свяжутся в скором времени."));
-                    document.getElementById("cart_form").reset();
+                    alert("Спасибо ".concat($('#id_name').val(),", Ваш заказ принят. Заказано ", $('#id_product_title').val(), " в количестве ", $("#1quantity").val(), ". Стоимость: ", $("#price").val(), ". С Вами свяжутся в скором времени."));
+                    document.getElementById("modal_cart_form").reset();
             }
         }
     });
