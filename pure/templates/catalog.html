@@ -60,11 +60,11 @@
       <div class="row">
         <header class="section-header">
           <div class="section-header__right">
-
             <div class="form-horizontal">
               <label for="SortBy">Сортировать по </label>
               <select name="SortBy" id="SortBy">
-                <option value="manual">Цене</option>
+                <option value="price-ascending">Цене,A-Z</option>
+                <option value="price-descending">Цене,Z-A</option>
                 <option value="title-ascending"> A-Z</option>
                 <option value="title-descending"> Z-A</option>
                 <option value="created-descending">По дате,Z-A</option>
@@ -244,5 +244,29 @@ $(function() {
     });
 });
 </script>
+<script type="text/javascript">
+  var queryParams = {};
+  if (location.search.length) {
+    for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
+      aKeyValue = aCouples[i].split('=');
+      if (aKeyValue.length > 1) {
+        queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
+      }
+    }
+  }
 
+  $(function() {
+    if (typeof queryParams.sort_by == 'undefined') {
+      queryParams.sort_by = 'price-ascending'
+    }
+    $('#SortBy')
+      .val(queryParams.sort_by)
+      .bind('change', function() {
+        queryParams.sort_by = jQuery(this).val();
+        location.search = jQuery.param(queryParams);
+        
+      }
+    );
+  });
+</script>
 {% endblock %}

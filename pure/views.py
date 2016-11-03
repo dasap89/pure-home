@@ -60,11 +60,26 @@ class CatalogPage(FiberPageMixin, PaginationMixin, ListView):
 
     def get_queryset(self):
         
-        parent_url = self.request.path[9:-1]         
+        parent_url = self.request.path[9:-1]
+
         if len(parent_url):
-            objects = Page.objects.filter(parent__url=parent_url)
+            objects = Page.objects.filter(parent__url=parent_url).order_by('current_price')
         else:
-            objects = Page.objects.filter(parent__url='svet')
-        print objects
+            objects = Page.objects.filter(parent__url='svet').order_by('current_price')
         
-        return objects
+        
+        if 'sort_by' in self.request.GET:
+            if self.request.GET['sort_by'] == 'price-ascending':
+                objects = objects.order_by('current_price')
+            elif self.request.GET['sort_by'] == 'price-descending':
+                objects = objects.order_by('-current_price')
+            elif self.request.GET['sort_by'] == 'title-ascending':
+                objects = objects.order_by('title')
+            elif self.request.GET['sort_by'] == 'title-descending':
+                objects = objects.order_by('-title')
+            elif self.request.GET['sort_by'] == 'created-descending':
+                objects = objects.order_by('-created')
+            elif self.request.GET['sort_by'] == 'created-ascending':
+                objects = objects.order_by('created')
+        
+        return objects     

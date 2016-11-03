@@ -83,12 +83,18 @@
             </div> 
             <div class="actions-item nrb__action">
               <div class="cart__area grd__add">
+                <a href="{{ seller.get_absolute_url }}">
                 <button type="submit" name="add" class="btn single_add_to_cart_button">
-                  <span><a href="{{ seller.get_absolute_url }}">ПОСМОТРЕТЬ</a></span>
+                  <span>ПОСМОТРЕТЬ</span>
                 </button>
+                </a>
               </div>
               <ul>
-                <li><a title="" data-toggle="modal" data-target="#h-lorem-ipsum-dolor-sit" href="{{ seller.get_absolute_url }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                <li>
+                  <a title="Заказать" href="#" data-toggle="modal" data-target="#cart_modal" name="add" data-product_title="{{ seller.title }}" data-product_url="{{ seller.get_absolute_url }}" data-product_price="{{ seller.current_price }}">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </a>
+                  </li>
               </ul>
             </div>
           </div>
@@ -125,7 +131,6 @@
         <div class="single-product">
           <div class="product-img">
             <a href="#">
-              <!--<img class="primary-image" src="{% static "img/shop/5.jpg" %}" alt="H Lorem ipsum dolor sit">-->
               {% show_page_content item "main_image" %}
               
               <span class="box-over"></span>
@@ -136,12 +141,18 @@
             </div> 
             <div class="actions-item nrb__action">
               <div class="cart__area grd__add">
+                <a href="{{ item.get_absolute_url }}">
                 <button type="submit" name="add" class="btn single_add_to_cart_button">
-		  <span><a href="{{ item.get_absolute_url }}">ПОСМОТРЕТЬ</a></span>
+		  <span>ПОСМОТРЕТЬ</span>
                 </button>
+                </a>
               </div>
               <ul>
-                <li><a title="" data-toggle="modal" data-target="#h-lorem-ipsum-dolor-sit" href="{{ item.get_absolute_url }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                <li>
+                  <a title="Заказать" href="#" data-toggle="modal" data-target="#cart_modal" name="add" data-product_title="{{ item.title }}" data-product_url="{{ item.get_absolute_url }}" data-product_price="{{ item.current_price }}">
+                      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -166,5 +177,117 @@
   </div>
 </div>
 
+
+{% endblock %}
+
+{% block additional_modals %}
+
+<!-- Modal For Ordering Goods From Catalog Pages-->
+<div class="modal fade" id="cart_modal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Заказать товар</h4>
+      </div>
+      <div class="modal-body">
+        
+      <form role="form" id="modal_cart_form" action={% if user.is_authenticated %}"/helpdesk/tickets/submit/"{% else %}"/helpdesk/"{% endif %} method="POST">
+        {% csrf_token %}
+        <!-- Hiden Fields -->
+        <input type="hidden" name="title" id="id_title" value="Cart Form"/>
+        <input type="hidden" name="queue" value="3"/>
+        <input type="hidden" name="body" id="body" value=""/>
+        <input type="hidden" name="priority" value="3"/>
+        <input type="hidden" name="product_title" id="id_product_title" value=""/>
+        <input type="hidden" name="product_url" id="id_product_url" value=""/>
+        <input type="hidden" name="product_price" id="id_product_price" value=""/>
+        
+        <!-- End of Hiden Fields -->
+        <div class="form-group">
+          <label for="name">Имя</label>
+            <input type="text" class="form-control" name="name" id="id_name" placeholder="Введите Ваше имя" required/>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPhone">Телефон</label>
+            <input type="phone" class="form-control" name="phone" id="id_phone" placeholder="Ваш номер телефона" required/>
+        </div>
+        <div class="form-group">
+          <label for="id_submitter_email">Email</label>
+            <input type="email" class="form-control" name="submitter_email" id="id_submitter_email" placeholder="Ваш почтовый ящик" required/>
+        </div>
+        <div class="form-group">
+          <label for="quantiry">Количество</label>
+            <input type="number" class="form-control" id="1quantity" name="1quantity" value="1" min="1" class="quantity-selector">
+        </div>
+        <div class="form-group">
+          <label for="price">Стоимость</label>
+            <input type="text" class="form-control" id="price" name="price" readonly>
+        </div>
+        
+        <button type="submit" id="submit_button" class="btn btn-default">Заказать!</button>
+        <button type="button" id="close_modal" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+      </form>
+    
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- End Modal -->
+
+{% endblock %}
+
+{% block additional_scripts %}
+
+<script type="text/javascript">
+$('#cart_modal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var product_title = button.data('product_title') // Extract info from data-* attributes
+  var product_url = button.data('product_url')
+  var product_price = button.data('product_price')
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('#id_product_title').val(product_title)
+  modal.find('.modal-title').text('Заказать ' + product_title)
+  modal.find('#id_product_url').val(product_url)
+  modal.find('#id_product_price').val(product_price)
+  modal.find('#price').val(parseFloat(product_price))
+  modal.find('#1quantity').val("1")
+});
+</script>
+<script type="text/javascript">
+$(function() {
+   $("#modal_cart_form").on('submit', function (e) {
+        e.preventDefault();
+        $('#body').val("Пользователь " + $('#id_name').val() + " хочет купить  " + $('#1quantity').val() + " шт. товара " + $('#id_product_title').val() + " (страница товара  " + $('#id_product_url').val() + " ). Стоимость " + $('#price').val() + ". Контакты: " + $('#id_phone').val() + " " + $('#id_submitter_email').val());
+        var url = $(e.currentTarget).attr('action');
+        var formData =  $(e.currentTarget).serialize();
+        $.ajax({
+            method: "POST",
+            url: url,
+            data: formData,
+            success: function (response) {
+                if (status == 302) {
+                    window.location.replace("/about/");
+                } else {
+                    alert("Спасибо ".concat($('#id_name').val(),", Ваш заказ принят. Заказано ", $('#id_product_title').val(), " в количестве ", $("#1quantity").val(), ". Стоимость: ", $("#price").val(), ". С Вами свяжутся в скором времени."));
+                    document.getElementById("modal_cart_form").reset();
+            }
+        }
+    });
+});
+});
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#1quantity').click(function(){
+        $('#price').val( $('#id_product_price').val() * $('#1quantity').val() );
+    });
+});
+</script>
 
 {% endblock %}

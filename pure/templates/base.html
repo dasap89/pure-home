@@ -345,11 +345,7 @@ $(function() {
         method: "POST",
         url: url,
         data: formData,
-	fail: function(response, status) {
-		debugger;
-	},
         success: function (response) {
-            debugger;
             if (status == 302) {
                 window.location.replace("/about/");
             } else {
