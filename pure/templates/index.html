@@ -79,7 +79,7 @@
               <span class="box-over"></span>
             </a>
             <div class="price-box">
-              <span class="new-price nrb">{{ seller.current_price }} {{ seller.metadata.currency }}</span> 
+              <span class="new-price nrb">{{ seller.current_price }} {% if seller.metadata.currency %}{{ seller.metadata.currency }}{% else %}руб.{% endif %}</span> 
             </div> 
             <div class="actions-item nrb__action">
               <div class="cart__area grd__add">
@@ -136,8 +136,8 @@
               <span class="box-over"></span>
             </a>
             <div class="price-box">
-              <span class="old-price"><del>{{ item.old_price }} {{ item.metadata.currency }}</del></span>
-              <span class="new-price nrb">{{ item.current_price|my_currency }} {{ item.metadata.currency }} </span> 
+              <span class="old-price"><del>{{ item.old_price }} {% if item.metadata.currency %}{{ item.metadata.currency }}{% else %}руб.{% endif %} </del></span>
+              <span class="new-price nrb">{{ item.current_price|my_currency }} {% if item.metadata.currency %}{{ item.metadata.currency }}{% else %}руб.{% endif %} </span> 
             </div> 
             <div class="actions-item nrb__action">
               <div class="cart__area grd__add">

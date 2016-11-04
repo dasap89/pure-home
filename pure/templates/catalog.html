@@ -89,9 +89,9 @@
               </a>
               <div class="price-box">
 		{% if product.old_price %}
-                <span class="old-price"><del>{{ product.old_price }} руб.</del></span>
+                <span class="old-price"><del>{{ product.old_price }} {% if product.metadata.currency %}{{ product.metadata.currency }}{% else %}руб.{% endif %}</del></span>
                 {% endif %}
-		<span class="new-price">{{ product.current_price }} руб.</span>
+		<span class="new-price">{{ product.current_price }} {% if product.metadata.currency %}{{ product.metadata.currency }}{% else %}руб.{% endif %}</span>
               </div>
               <div class="actions-item nrb__action">
                 <div class="cart__area grd__add">
