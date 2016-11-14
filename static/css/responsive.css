@@ -1495,10 +1495,7 @@
     .header-wrap .center-banner-area img {
         height: 100%;
     }
-    .header-wrap .center-banner-area .banner-text {
-        top: 0;
-        left: 20px;
-    }
+
    .header-wrap .center-banner-area .banner-text .responsive-img-head {
     width: 60%;
    }
@@ -1547,11 +1544,7 @@
    .center-banner-area img {
     height: 100%;
    }
-   .center-banner-area .banner-text {
-    top: 15px;
-    left: 0;
 
-   }
    .center-banner-area .banner-text h3 {
     font-size: 16px;
    }
@@ -1571,10 +1564,7 @@
    .header-wrap-other .banner-text-other .other {
     font-size: 24px;
    }
-   .header-wrap-other .center-banner-area .banner-text {
-    top: 70px;
-    left: 26%;
-   }
+
    .map-info-area {
     float: left;
    }

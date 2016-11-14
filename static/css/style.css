@@ -190,8 +190,9 @@ nav>li>a {
 	text-decoration: none;
 	background-color: initial;
 }
-.mega-collapse ul.nav li a {
-	padding: 5px 25px 5px 0;
+.mega-collapse .nav li a {
+	padding: 5px 20px;
+    padding-left: 0;
 	text-decoration: none;
 	display: block;
 	line-height: 30px;
@@ -200,6 +201,14 @@ nav>li>a {
 	font-weight: 700;
 	color: #020202;
 	position: relative;
+}
+.mega-collapse .site-nav__dropdown li a {
+    padding-left: 10px;
+    padding-right: 0;
+
+}
+.mega-collapse ul.nav li a i {
+    padding-left: 5px;
 }
 .mega-collapse ul.nav li .mega-menu {
 	background-color: #fff;
@@ -787,7 +796,7 @@ a.images img, .single-thumb img{ width: 100%; }
 	padding: 0 35px;
     background: #fff;
     display: inline-block;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 30px;
     color: #252525;
     text-transform: uppercase;
@@ -796,6 +805,12 @@ a.images img, .single-thumb img{ width: 100%; }
 }
 .section-title h3 {
 	padding: 0 35px 0 0;
+}
+.contakt-header-text {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 20px;
 }
 /*.section-heading h3::before {
     background: none;
@@ -1063,9 +1078,13 @@ h2.product-name {
     top: 0;
 }
 .center-banner-area .banner-text {
+    top: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     position: absolute;
-    top: 120px;
-    left: 13%;
+    left: 50%;
+    width: 100%;
 }
 .header-wrap-other .banner-text-other {
         margin: auto;
@@ -1406,11 +1425,12 @@ form.newslatter-form {
 --------------------------------*/
 .brand-area{
 	position: relative;
-	margin: 30px 0px;
+	margin: 50px 0px;
 }
 .brand-area .brand-item{
 	margin: 0 40px;
 	float: left;
+    margin-top: 20px;
 }
 /*2.9 Snap footer Area
 --------------------------------*/
@@ -1547,11 +1567,11 @@ form.newslatter-form {
 }
 .cakewalk-footer-content .social-footer {
     display: block;
-    margin-top: 35px;
+    margin-top: 30px;
 }
 .cakewalk-footer-content .social-footer li {
     display: inline-block;
-    padding-right: 45px;
+    padding-right: 30px;
 }
 .cakewalk-footer-content .social-footer li a  {
     font-size: 24pt;
@@ -1611,14 +1631,7 @@ ul.payment li {
 ===============================================*/
 /*3.1 Header Area
 --------------------------------------------------------------------*/
-.header-wrap .center-banner-area .banner-text {
-    left: 50px;
-    top: 55px;
-}
-.header-wrap-other .center-banner-area .banner-text {
-    top: 120px;
-    left: 43%;
-}
+
 .header-wrap-other .center-banner-area {
     margin: 0;
 }
@@ -3095,9 +3108,7 @@ padding: 5px;
     color: #747474;
     font-family: "OpenSansRegular";
 }
-.sppb-addon-content .location {
-    line-height: 22px;
-}
+
 .sppb-addon-content span em {
   color: #71757f;
   font-size: 20px;
@@ -3658,7 +3669,6 @@ input#rememberme {
 }
 .mega-collapse .site-nav__dropdown a {
   background-color: transparent;
-  padding: 0 !important;
 }
 .mega-collapse .site-nav__dropdown {
   background: #fff none repeat scroll 0 0;
@@ -4076,15 +4086,11 @@ width: 100%;}
 }
 .brand-area {
   border-top: 1px solid #ddd;
-  margin: 30px 0 21px;
+  margin: 50px 0 21px;
   padding-top: 12px;
   position: relative;
 }
-.template-index .brand-area {
-  border-top: 0;
-  margin: 30px;
-  padding-top:0;
-}
+
 nav.breadcrumb {
   padding-left: 0;
 }
@@ -4251,7 +4257,8 @@ nav.breadcrumb {
   border: 0 none;
 }
 .grd__add .single_add_to_cart_button:hover {
-  color: #5b84ad;
+  color: #fff;
+  text-decoration: underline;
 }
 .grd__add.cart__area {
   float: left;
@@ -4945,8 +4952,8 @@ ul.rig li img {
 
 
 .product-description.rte {
-  font-size: 12px;
-  line-height: 18pt;
+  font-size: 14px;
+  line-height: 14pt;
   color: #747474;
   font-family: "ArialRegular";
 }
@@ -5059,6 +5066,11 @@ a.images div div img {
 }
 
 
+.mega-collapse ul.nav li.current a { 
+    /* This is needed to set color for active current page*/
+    color: #5b84ad;
+}
+
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 .subscribe-form button {
 right: 4px;
@@ -5067,8 +5079,4 @@ top: 1px;
 
 
 }
-
-
-
-
 

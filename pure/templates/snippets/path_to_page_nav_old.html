@@ -1,11 +1,9 @@
 <nav class="breadcrumb" aria-label="breadcrumbs">
     <a href="/" title="Back to the frontpage">Главная</a>
         {% for ancestor in fiber_page.get_ancestors %}
-          {% if ancestor.url != "catalog" %}
-            {% if ancestor.title != 'mainmenu' %}
-              <span aria-hidden="true">&rsaquo;</span>
-              <a href="{{ ancestor.get_absolute_url }}" title="Back to the {{ ancestor.title }}">{{ ancestor.title }}</a>
-            {% endif %}
+          {% if ancestor.title != 'mainmenu' %}
+            <span aria-hidden="true">&rsaquo;</span>
+            <a href="{{ ancestor.get_absolute_url }}" title="Back to the {{ ancestor.title }}">{{ ancestor.title }}</a>
           {% endif %}
         {% endfor %}
         <span aria-hidden="true">&rsaquo;</span>

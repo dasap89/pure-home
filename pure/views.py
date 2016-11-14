@@ -51,7 +51,7 @@ class SearchPage(PaginationMixin, ListView):
         return context
 
 class CatalogPage(FiberPageMixin, PaginationMixin, ListView):
-    paginate_by = 9 #this variable is used for pagination
+    paginate_by = 3
     template_name = 'catalog.html'
 
 
